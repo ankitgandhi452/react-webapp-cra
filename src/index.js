@@ -4,9 +4,11 @@ import {
   BrowserRouter as Router
 } from 'react-router-dom'
 import { Provider } from 'react-redux'
+import { CssBaseline, ThemeProvider } from '@mui/material'
 
 import App from './App'
 import AppStore from './AppStore'
+import AppTheme from './AppTheme'
 import './index.css'
 
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
@@ -15,11 +17,14 @@ import reportWebVitals from './reportWebVitals'
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
-    <Provider store={AppStore}>
-      <Router>
-        <App />
-      </Router>
-    </Provider>
+    <ThemeProvider theme={AppTheme}>
+      <CssBaseline enableColorScheme />
+      <Provider store={AppStore}>
+        <Router>
+          <App />
+        </Router>
+      </Provider>
+    </ThemeProvider>
   </React.StrictMode>
 )
 
