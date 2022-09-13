@@ -6,13 +6,13 @@ import {
 import { Provider } from 'react-redux'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 
-import App from './App'
-import AppStore from './AppStore'
-import AppTheme from './AppTheme'
+import App from 'src/App'
+import AppStore from 'src/AppStore'
+import AppTheme from 'src/AppTheme'
 import './index.css'
 
-import * as serviceWorkerRegistration from './serviceWorkerRegistration'
-import reportWebVitals from './reportWebVitals'
+import * as serviceWorkerRegistration from 'src/serviceWorkerRegistration'
+import reportWebVitals from 'src/reportWebVitals'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(

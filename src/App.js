@@ -11,7 +11,7 @@ import {
   HOME_PAGE
 } from './Constants/APP_ROUTES'
 
-const HomePage = React.lazy(() => import('./Pages/Home/Home.Container'))
+const HomePage = React.lazy(() => import('src/Pages/Home/Home.Container'))
 
 function App () {
   const location = useLocation()
