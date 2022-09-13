@@ -1,3 +1,4 @@
+const path = require('path')
 const {
   override,
   overrideDevServer,
@@ -5,9 +6,9 @@ const {
   addWebpackAlias,
   addWebpackPlugin
 } = require('customize-cra')
-const path = require('path')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
+
 const AppConfig = require('./AppConfig')
 const { appInfo, theme, manifestInfo, favIcons } = AppConfig
 
