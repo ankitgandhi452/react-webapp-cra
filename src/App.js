@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import {
+  Routes,
+  Route,
+  useLocation,
+  useNavigate,
+  useParams
+} from 'react-router-dom'
 
-function App() {
+import {
+  HOME_PAGE
+} from './Constants/APP_ROUTES'
+
+const HomePage = React.lazy(() => import('./Pages/Home/Home.Container'))
+
+function App () {
+  const location = useLocation()
+  const navigate = useNavigate()
+  const params = useParams()
+
+  const routerProps = { location, navigate, params }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Routes>
+      <Route path={HOME_PAGE} element={<HomePage {...routerProps} />} />
+    </Routes>
+  )
 }
 
-export default App;
+export default App
