@@ -16,9 +16,10 @@ const PWA_MANIFEST_CONFIG = {
   name: appInfo.appName,
   short_name: appInfo.shortName,
   description: appInfo.appDescription,
-  background_color: theme.background,
+  background_color: manifestInfo.background,
   start_url: manifestInfo.startUrl,
   display: manifestInfo.display,
+  orientation: manifestInfo.orientation,
   crossorigin: null, // can be null, use-credentials or anonymous
   icons: manifestInfo.icons,
   ios: true

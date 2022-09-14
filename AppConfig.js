@@ -5,16 +5,17 @@ const AppConfig = {
     appName: process.env.REACT_APP_APP_TITLE,
     shortName: 'React Webapp CRA',
     appDescription: process.env.REACT_APP_APP_DESCRIPTION,
-    orientation: 'any', // "any", "natural", "landscape", "portrait", "portrait-primary", "portrait-secondary", "landscape-primary", or "landscape-secondary"
   },
   theme: {
-    background: '#eb4034',
-    themeColor: '#eb4034'
+    background: '#000000',
+    themeColor: '#000000'
   },
   favIcons: {
     logo: './public/logo192.png' // svg works too!
   },
   manifestInfo: {
+    orientation: 'any', // "any", "natural", "landscape", "portrait", "portrait-primary", "portrait-secondary", "landscape-primary", or "landscape-secondary"
+    background: '#ffffff',
     display: 'standalone', // "fullscreen", "standalone", "minimal-ui", "browser"
     startUrl: '.',
     icons: [
@@ -27,7 +28,7 @@ const AppConfig = {
         size: '512x512' // you can also use the specifications pattern
       },
       {
-        src: path.resolve('src/assets/logo512.png'),
+        src: path.resolve(__dirname, 'public/logo512.png'),
         size: '512x512',
         purpose: 'maskable'
       }
