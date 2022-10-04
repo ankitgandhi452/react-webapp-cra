@@ -1,13 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import {
-  BrowserRouter as Router
-} from 'react-router-dom'
+import { RouterProvider } from 'react-router-dom'
 import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 
-import App from 'src/App'
-import AppStore from 'src/AppStore'
+import router from './AppRouter'
+import AppStore, { PersistedAppStore } from 'src/AppStore'
 import AppTheme from 'src/AppTheme'
 import './index.css'
 
@@ -20,9 +19,9 @@ root.render(
     <ThemeProvider theme={AppTheme}>
       <CssBaseline enableColorScheme />
       <Provider store={AppStore}>
-        <Router>
-          <App />
-        </Router>
+        <PersistGate loading={null} persistor={PersistedAppStore}>
+          <RouterProvider router={router} />
+        </PersistGate>
       </Provider>
     </ThemeProvider>
   </React.StrictMode>
