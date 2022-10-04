@@ -8,7 +8,8 @@ export const getReducer = state => {
 
 const INITIAL_STATE = {
   authToken: '',
-  apiKey: ''
+  apiKey: '',
+  isLoggedIn: false
 }
 
 const slice = createSlice({
