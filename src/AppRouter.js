@@ -10,7 +10,8 @@ import {
 } from './Constants/APP_ROUTES'
 import { checkIfLoggedIn } from './Utils/authentication'
 
-const AppPage = React.lazy(() => import('src/App'))
+const AuthLayout = React.lazy(() => import('src/Layouts/Auth.Layout'))
+const UnauthLayout = React.lazy(() => import('src/Layouts/Unauth.Layout'))
 const HomePage = React.lazy(() => import('src/Pages/Home/Home.Container'))
 const LoginPage = React.lazy(() => import('src/Pages/Login/Login.Container'))
 
@@ -46,17 +47,23 @@ const redirectIfLoggedIn = (route) => ({ params }) => {
 export default createBrowserRouter([
   {
     path: '/',
-    element: <AppPage />,
+    element: <UnauthLayout />,
+    children: [
+      {
+        path: LOGIN_PAGE,
+        element: <LoginPage />,
+        loader: redirectIfLoggedIn(LOGIN_PAGE)
+      }
+    ]
+  },
+  {
+    path: '/',
+    element: <AuthLayout />,
     children: [
       {
         path: HOME_PAGE,
         element: <HomePage />,
         loader: redirectIfNotLoggedIn(HOME_PAGE)
-      },
-      {
-        path: LOGIN_PAGE,
-        element: <LoginPage />,
-        loader: redirectIfLoggedIn(LOGIN_PAGE)
       }
     ]
   }
