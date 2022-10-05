@@ -1,17 +1,20 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 
-import router from './AppRouter'
+import getAppRouter from './getAppRouter'
 import AppStore, { PersistedAppStore } from 'src/AppStore'
 import AppTheme from 'src/AppTheme'
 import './index.css'
 
 import * as serviceWorkerRegistration from 'src/serviceWorkerRegistration'
+import Loader from './Components/Loader'
 // import reportWebVitals from 'src/reportWebVitals'
+
+const onBeforeLift = () => ({})
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
@@ -19,8 +22,18 @@ root.render(
     <ThemeProvider theme={AppTheme}>
       <CssBaseline enableColorScheme />
       <Provider store={AppStore}>
-        <PersistGate loading={null} persistor={PersistedAppStore}>
-          <RouterProvider router={router} />
+        <PersistGate
+          persistor={PersistedAppStore} onBeforeLift={onBeforeLift}
+        >
+          {(persisted) => {
+            if (!persisted) return <Loader />
+            const router = getAppRouter()
+            return (
+              <Suspense loading={<Loader />}>
+                <RouterProvider router={router} />
+              </Suspense>
+            )
+          }}
         </PersistGate>
       </Provider>
     </ThemeProvider>

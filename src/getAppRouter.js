@@ -44,20 +44,8 @@ const redirectIfLoggedIn = (route) => ({ params }) => {
   }
 }
 
-export default createBrowserRouter([
+const getAppRouter = () => createBrowserRouter([
   {
-    path: '/',
-    element: <UnauthLayout />,
-    children: [
-      {
-        path: LOGIN_PAGE,
-        element: <LoginPage />,
-        loader: redirectIfLoggedIn(LOGIN_PAGE)
-      }
-    ]
-  },
-  {
-    path: '/',
     element: <AuthLayout />,
     children: [
       {
@@ -66,5 +54,17 @@ export default createBrowserRouter([
         loader: redirectIfNotLoggedIn(HOME_PAGE)
       }
     ]
+  },
+  {
+    element: <UnauthLayout />,
+    children: [
+      {
+        path: LOGIN_PAGE,
+        element: <LoginPage />,
+        loader: redirectIfLoggedIn(LOGIN_PAGE)
+      }
+    ]
   }
 ])
+
+export default getAppRouter
