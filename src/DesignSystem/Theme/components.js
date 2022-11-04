@@ -1,8 +1,53 @@
 import { experimental_sx as sx, inputLabelClasses, inputBaseClasses } from '@mui/material'
 import dsSpacing, { getSpacingPX } from './spacing'
 
-export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
+export default function getComponents(dsColor, dsTypo, calculateLinerHeight) {
   const components = {
+    MuiAlert: {
+      defaultProps: {
+        variant: 'filled',
+        icon: false
+      },
+      styleOverrides: {
+        root: sx({
+          borderRadius: '4px',
+          borderWidth: '1px',
+          borderStyle: 'solid',
+          borderColor: dsColor.strokeDefault,
+          boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)'
+        }),
+        filled: sx({
+          color: dsColor.typoOnSurface
+        }),
+        filledSuccess: sx({
+          backgroundColor: dsColor.supportPositive
+        }),
+        filledInfo: sx({
+          backgroundColor: dsColor.supportTypical
+        }),
+        filledWarning: sx({
+          backgroundColor: dsColor.supportWarning
+        }),
+        filledError: sx({
+          backgroundColor: dsColor.supportNegative
+        }),
+        outlined: sx({
+          backgroundColor: dsColor.surfaceBackground
+        }),
+        outlinedSuccess: sx({
+          color: dsColor.supportPositive
+        }),
+        outlinedInfo: sx({
+          color: dsColor.supportTypical
+        }),
+        outlinedWarning: sx({
+          color: dsColor.supportWarning
+        }),
+        outlinedError: sx({
+          color: dsColor.supportNegative
+        })
+      }
+    },
     MuiChip: {
       defaultProps: {
         size: 'small',
