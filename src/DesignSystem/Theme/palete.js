@@ -45,7 +45,10 @@ export default function getPalette (colorPalette = {}, mode = 'dark') {
 
     variable,
     variableLight,
-    variableExtraLight
+    variableExtraLight,
+
+    typical,
+    typicalLight
   } = colorPalette
 
   const dsColor = {
@@ -66,6 +69,7 @@ export default function getPalette (colorPalette = {}, mode = 'dark') {
     typoActionTertiary: tertiary1,
     typoOnSurface: white,
     typoDisabled: mode === 'light' ? grey6 : grey5,
+    typoTypical: typical,
 
     neutral1: variableExtraLight,
     neutral2: tertiaryExtraLight,
@@ -80,6 +84,7 @@ export default function getPalette (colorPalette = {}, mode = 'dark') {
     iconOnSurface: white,
     iconDisabled: mode === 'light' ? grey6 : grey5,
     iconDefault: mode === 'light' ? grey1 : white,
+    iconTypical: typical,
 
     strokeDefault: mode === 'light' ? grey8 : grey3,
     strokeHover: secondary4,
@@ -97,11 +102,13 @@ export default function getPalette (colorPalette = {}, mode = 'dark') {
     supportPending: pending,
     supportWarning: warning,
     supportVariable: variable,
+    supportTypical: typical,
 
     supportNegativeNeutral: negativeLight,
     supportPositiveNeutral: positiveLight,
     supportPendingNeutral: pendingLight,
     supportWarningNeutral: warningLight,
+    supportDefaultNeutral: typicalLight,
 
     stateDisabledSurface: mode === 'light' ? grey9 : grey1,
     stateUnselected: mode === 'light' ? grey6 : grey5,

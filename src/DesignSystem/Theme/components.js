@@ -10,9 +10,10 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
       },
       variants: [
         {
-          props: { type: 'status', color: 'default' },
+          props: { type: 'status' },
           style: sx({
-            backgroundColor: dsColor.supportTypical
+            backgroundColor: dsColor.supportTypical,
+            color: dsColor.typoOnSurface
           })
         },
         {
@@ -56,7 +57,8 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
         {
           props: { type: 'nudge', color: 'default' },
           style: sx({
-            backgroundColor: dsColor.supportTypical
+            backgroundColor: dsColor.supportDefaultNeutral,
+            color: dsColor.supportTypical
           })
         },
         {
@@ -109,7 +111,8 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
         iconSmall: sx({
           fontSize: dsTypo.fontsizeIceage,
           m: dsSpacing.zero,
-          mr: dsSpacing.quickfreeze
+          mr: dsSpacing.quickfreeze,
+          color: 'inherit'
         }),
         labelSmall: sx({
           p: dsSpacing.zero

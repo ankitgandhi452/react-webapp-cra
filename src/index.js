@@ -63,7 +63,10 @@ const palettes = {
 
     variable: '#145599',
     variableLight: '#0F1B32',
-    variableExtraLight: '#0C1015'
+    variableExtraLight: '#0C1015',
+
+    typical: '#165964',
+    typicalLight: '#E3F5F8'
   },
 
   light: {
@@ -112,7 +115,10 @@ const palettes = {
 
     variable: '#145599',
     variableLight: '#EBF0F9',
-    variableExtraLight: '#F1F4F7'
+    variableExtraLight: '#F1F4F7',
+
+    typical: '#165964',
+    typicalLight: '#E3F5F8'
   }
 }
 
