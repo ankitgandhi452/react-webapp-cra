@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 
+import Grid from '@mui/material/Grid'
 import Accordion from '@mui/material/Accordion'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
@@ -10,14 +11,26 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import ExamplesButtons from './ExamplesButtons'
 import ExamplesTextField from './ExamplesTextField'
 import ExamplesAvatars from './ExamplesAvatars'
-import Grid from '@mui/material/Grid'
 import ExamplesDialog from './ExamplesDialog'
+import ExamplesChips from './ExamplesChips'
 
 export default class Examples extends PureComponent {
   render () {
     return (
       <Grid container spacing={2}>
         <Grid item>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls='panel1a-content'
+              id='panel1a-header'
+            >
+              <Typography>Chips</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <ExamplesChips />
+            </AccordionDetails>
+          </Accordion>
           <Accordion>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}

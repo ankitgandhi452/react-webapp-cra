@@ -3,6 +3,119 @@ import dsSpacing, { getSpacingPX } from './spacing'
 
 export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
   const components = {
+    MuiChip: {
+      defaultProps: {
+        size: 'small',
+        type: 'status'
+      },
+      variants: [
+        {
+          props: { type: 'status', color: 'default' },
+          style: sx({
+            backgroundColor: dsColor.supportTypical
+          })
+        },
+        {
+          props: { type: 'status', color: 'success' },
+          style: sx({
+            backgroundColor: dsColor.supportPositive
+          })
+        },
+        {
+          props: { type: 'status', color: 'warning' },
+          style: sx({
+            backgroundColor: dsColor.supportWarning
+          })
+        },
+        {
+          props: { type: 'status', color: 'pending' },
+          style: sx({
+            backgroundColor: dsColor.supportPending
+          })
+        },
+        {
+          props: { type: 'status', color: 'error' },
+          style: sx({
+            backgroundColor: dsColor.supportNegative
+          })
+        },
+        {
+          props: { type: 'status', color: 'info' },
+          style: sx({
+            backgroundColor: dsColor.neutral1,
+            color: dsColor.typoPrimary
+          })
+        },
+        {
+          props: { type: 'nudge' },
+          style: sx({
+            py: dsSpacing.deepfreeze,
+            textTransform: 'none'
+          })
+        },
+        {
+          props: { type: 'nudge', color: 'default' },
+          style: sx({
+            backgroundColor: dsColor.supportTypical
+          })
+        },
+        {
+          props: { type: 'nudge', color: 'success' },
+          style: sx({
+            backgroundColor: dsColor.supportPositiveNeutral,
+            color: dsColor.supportPositive
+          })
+        },
+        {
+          props: { type: 'nudge', color: 'warning' },
+          style: sx({
+            backgroundColor: dsColor.supportWarningNeutral,
+            color: dsColor.supportWarning
+          })
+        },
+        {
+          props: { type: 'nudge', color: 'pending' },
+          style: sx({
+            backgroundColor: dsColor.supportPendingNeutral,
+            color: dsColor.supportPending
+          })
+        },
+        {
+          props: { type: 'nudge', color: 'error' },
+          style: sx({
+            backgroundColor: dsColor.supportNegativeNeutral,
+            color: dsColor.supportNegative
+          })
+        },
+        {
+          props: { type: 'nudge', color: 'info' },
+          style: sx({
+            backgroundColor: dsColor.neutral1,
+            color: dsColor.typoPrimary
+          })
+        }
+      ],
+      styleOverrides: {
+        root: {
+          ...dsTypo.supportRegularMetadata,
+          color: dsColor.typoOnSurface,
+          borderRadius: '4px'
+        },
+        sizeSmall: sx({
+          px: dsSpacing.glacial,
+          py: dsSpacing.quickfreeze,
+          height: '20px'
+        }),
+        iconSmall: sx({
+          fontSize: dsTypo.fontsizeIceage,
+          m: dsSpacing.zero,
+          mr: dsSpacing.quickfreeze
+        }),
+        labelSmall: sx({
+          p: dsSpacing.zero
+        })
+      }
+    },
     MuiDialog: {
       defaultProps: {
         scroll: 'paper',

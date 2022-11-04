@@ -66,6 +66,7 @@ export default function getPalette (colorPalette = {}, mode = 'dark') {
     typoActionTertiary: tertiary1,
     typoOnSurface: white,
     typoDisabled: mode === 'light' ? grey6 : grey5,
+
     neutral1: variableExtraLight,
     neutral2: tertiaryExtraLight,
     neutral3: variableLight,
@@ -96,6 +97,8 @@ export default function getPalette (colorPalette = {}, mode = 'dark') {
     supportPending: pending,
     supportWarning: warning,
     supportVariable: variable,
+
+    supportNegativeNeutral: negativeLight,
     supportPositiveNeutral: positiveLight,
     supportPendingNeutral: pendingLight,
     supportWarningNeutral: warningLight,
@@ -136,6 +139,10 @@ export default function getPalette (colorPalette = {}, mode = 'dark') {
     },
     warning: {
       main: dsColor.supportWarning,
+      contrastText: dsColor.typoOnSurface
+    },
+    pending: {
+      main: dsColor.supportPending,
       contrastText: dsColor.typoOnSurface
     },
     info: {
