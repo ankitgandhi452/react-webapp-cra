@@ -6,7 +6,9 @@ import {
 
 import {
   LOGIN_PAGE,
-  HOME_PAGE
+  HOME_PAGE,
+
+  EXAMPLES_PAGE
 } from './Constants/APP_ROUTES'
 import { checkIfLoggedIn } from './Utils/authentication'
 
@@ -14,6 +16,8 @@ const AuthLayout = React.lazy(() => import('src/Layouts/Auth.Layout'))
 const UnauthLayout = React.lazy(() => import('src/Layouts/Unauth.Layout'))
 const HomePage = React.lazy(() => import('src/Pages/Home/Home.Container'))
 const LoginPage = React.lazy(() => import('src/Pages/Login/Login.Container'))
+
+const ExamplesPage = React.lazy(() => import('src/DesignSystem/Examples'))
 
 const DEFAULT_LOGGED_IN_ROUTE = HOME_PAGE
 const DEFAULT_NOT_LOGGED_IN_ROUTE = LOGIN_PAGE
@@ -62,6 +66,15 @@ const getAppRouter = () => createBrowserRouter([
         path: LOGIN_PAGE,
         element: <LoginPage />,
         loader: redirectIfLoggedIn(LOGIN_PAGE)
+      }
+    ]
+  },
+  {
+    element: <UnauthLayout />,
+    children: [
+      {
+        path: EXAMPLES_PAGE,
+        element: <ExamplesPage />
       }
     ]
   }
