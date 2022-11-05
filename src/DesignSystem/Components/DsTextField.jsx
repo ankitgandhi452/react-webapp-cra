@@ -28,8 +28,6 @@ export default class DsTextField extends PureComponent {
 
     const customColor = success ? 'success' : color
 
-    console.log('customColor', customColor)
-
     const Icon = (error && ErrorRoundedIcon) || (success && CheckCircleRoundedIcon) || ''
     const helperTextJSX = (
       <Box

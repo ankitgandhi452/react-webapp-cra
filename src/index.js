@@ -4,6 +4,7 @@ import { RouterProvider } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { CssBaseline, ThemeProvider } from '@mui/material'
+import { SnackbarProvider } from 'notistack'
 
 import getAppRouter from './getAppRouter'
 import AppStore, { PersistedAppStore } from 'src/AppStore'
@@ -12,6 +13,7 @@ import './index.css'
 
 import * as serviceWorkerRegistration from 'src/serviceWorkerRegistration'
 import Loader from './Components/Loader'
+import Notification from './Components/Notification'
 // import reportWebVitals from 'src/reportWebVitals'
 
 const onBeforeLift = () => ({})
@@ -142,7 +144,16 @@ root.render(
             <ThemeProvider theme={AppTheme}>
               <CssBaseline enableColorScheme />
               <Suspense loading={<Loader />}>
-                <RouterProvider router={router} />
+                <SnackbarProvider
+                  maxSnack={3}
+                  preventDuplicate
+                  anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                  // TransitionComponent={Transition}
+                  autoHideDuration={4000}
+                >
+                  <Notification />
+                  <RouterProvider router={router} />
+                </SnackbarProvider>
               </Suspense>
             </ThemeProvider>
           )
