@@ -1,7 +1,7 @@
 import { experimental_sx as sx, inputLabelClasses, inputBaseClasses } from '@mui/material'
 import dsSpacing, { getSpacingPX } from './spacing'
 
-export default function getComponents(dsColor, dsTypo, calculateLinerHeight) {
+export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
   const components = {
     MuiAlert: {
       defaultProps: {

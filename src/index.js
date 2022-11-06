@@ -3,8 +3,12 @@ import ReactDOM from 'react-dom/client'
 import { RouterProvider } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
-import { CssBaseline, ThemeProvider } from '@mui/material'
+import { ThemeProvider } from '@mui/material'
+import CssBaseline from '@mui/material/CssBaseline'
 import { SnackbarProvider } from 'notistack'
+
+import Loader from './Components/Loader'
+import DsNotistackAlert from './DesignSystem/Components/DsNotistackAlert'
 
 import getAppRouter from './getAppRouter'
 import AppStore, { PersistedAppStore } from 'src/AppStore'
@@ -12,9 +16,7 @@ import getTheme from 'src/DesignSystem/Theme'
 import './index.css'
 
 import * as serviceWorkerRegistration from 'src/serviceWorkerRegistration'
-import Loader from './Components/Loader'
-import Notification from './Components/Notification'
-// import reportWebVitals from 'src/reportWebVitals'
+import reportWebVitals from 'src/reportWebVitals'
 
 const onBeforeLift = () => ({})
 
@@ -148,10 +150,10 @@ root.render(
                   maxSnack={3}
                   preventDuplicate
                   anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-                  // TransitionComponent={Transition}
+                  hideIconVariant
+                  content={(key, options) => <DsNotistackAlert key={key} options={options} />}
                   autoHideDuration={4000}
                 >
-                  <Notification />
                   <RouterProvider router={router} />
                 </SnackbarProvider>
               </Suspense>
@@ -171,4 +173,4 @@ serviceWorkerRegistration.register()
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals()
+reportWebVitals()

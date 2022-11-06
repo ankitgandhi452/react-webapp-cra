@@ -187,20 +187,20 @@ export default function getPalette (colorPalette = {}, mode = 'dark') {
     background: {
       default: dsColor.surfaceBackground,
       paper: dsColor.surfaceSecondary
-    },
-    action: {
-      active: tertiary3,
-      hover: tertiary5,
-      hoverOpacity: 1,
-      selected: tertiary4,
-      selectedOpacity: 1,
-      disabled: dsColor.typoOnSurface,
-      disabledBackground: dsColor.stateUnselected,
-      disabledOpacity: 1,
-      focus: tertiary1,
-      focusOpacity: 1,
-      activatedOpacity: 1
     }
+    // action: {
+    //   active: tertiary3,
+    //   hover: tertiary5,
+    //   hoverOpacity: 1,
+    //   selected: tertiary4,
+    //   selectedOpacity: 1,
+    //   disabled: dsColor.typoOnSurface,
+    //   disabledBackground: dsColor.stateUnselected,
+    //   disabledOpacity: 1,
+    //   focus: tertiary1,
+    //   focusOpacity: 1,
+    //   activatedOpacity: 1
+    // }
   }
 
   return { dsColor, palette }
