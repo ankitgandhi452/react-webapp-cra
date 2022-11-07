@@ -1,4 +1,4 @@
-export default function getPalette (colorPalette = {}, mode = 'dark') {
+export default function getPalette(colorPalette = {}, mode = 'dark') {
   const {
     primary,
 
@@ -160,6 +160,10 @@ export default function getPalette (colorPalette = {}, mode = 'dark') {
       main: dsColor.supportPositive,
       contrastText: dsColor.typoOnSurface
     },
+    surface: {
+      main: dsColor.surfaceBackground,
+      contrastText: dsColor.typoPrimary
+    },
     grey: {
       50: grey1,
       100: grey2,
@@ -206,7 +210,7 @@ export default function getPalette (colorPalette = {}, mode = 'dark') {
   return { dsColor, palette }
 }
 
-function hexToRgbA (hexCode, alpha = 1) {
+function hexToRgbA(hexCode, alpha = 1) {
   if (/^#([A-Fa-f0-9]{6})$/.test(hexCode)) {
     const hex = hexCode.replace('#', '0x')
     return `rgba(${(hex >> 16) & 255},${(hex >> 8) & 255},${hex & 255},${alpha})`

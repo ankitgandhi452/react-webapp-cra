@@ -15,12 +15,25 @@ import ExamplesDialog from './ExamplesDialog'
 import ExamplesChips from './ExamplesChips'
 import ExamplesAlerts from './ExamplesAlerts'
 import ExamplesNotification from './ExamplesNotification'
+import ExamplesAppBar from './ExamplesAppBar'
 
 export default class Examples extends PureComponent {
   render () {
     return (
       <Grid container spacing={2}>
         <Grid item>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls='panel1a-content'
+              id='panel1a-header'
+            >
+              <Typography>AppBar</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <ExamplesAppBar />
+            </AccordionDetails>
+          </Accordion>
           <Accordion>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}

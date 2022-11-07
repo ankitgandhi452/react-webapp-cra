@@ -6,7 +6,7 @@ import DsDialogue from '../Components/DsDialogue'
 import { Stack } from '@mui/system'
 
 class ExamplesDialog extends PureComponent {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
@@ -25,27 +25,27 @@ class ExamplesDialog extends PureComponent {
     this.handleClose = this.handleClose.bind(this)
   }
 
-  handleSingleButtonOpen () {
+  handleSingleButtonOpen() {
     this.setState({ singleButtonOpen: true })
   }
 
-  handleDoubleButtonOpen () {
+  handleDoubleButtonOpen() {
     this.setState({ doubleButtonOpen: true })
   }
 
-  handleTripleButtonOpen () {
+  handleTripleButtonOpen() {
     this.setState({ tripleButtonOpen: true })
   }
 
-  handleFlushedButtonOpen () {
+  handleFlushedButtonOpen() {
     this.setState({ flushedButtonOpen: true })
   }
 
-  handleFlushedTripleButtonOpen () {
+  handleFlushedTripleButtonOpen() {
     this.setState({ flushedTripleButtonOpen: true })
   }
 
-  handleClose () {
+  handleClose() {
     this.setState({
       singleButtonOpen: false,
       doubleButtonOpen: false,
@@ -55,7 +55,7 @@ class ExamplesDialog extends PureComponent {
     })
   }
 
-  render () {
+  render() {
     const {
       singleButtonOpen,
       doubleButtonOpen,
@@ -82,7 +82,18 @@ class ExamplesDialog extends PureComponent {
             onClose={this.handleClose}
             textOnly
           >
-            Single Button
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nulla leo rutrum nisl in. Ac vitae tempor diam maecenas eget at quam. Neque orci arcu amet.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nulla leo rutrum nisl in. Ac vitae tempor diam maecenas eget at quam. Neque orci arcu amet.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nulla leo rutrum nisl in. Ac vitae tempor diam maecenas eget at quam. Neque orci arcu amet.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nulla leo rutrum nisl in. Ac vitae tempor diam maecenas eget at quam. Neque orci arcu amet.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nulla leo rutrum nisl in. Ac vitae tempor diam maecenas eget at quam. Neque orci arcu amet.
+
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nulla leo rutrum nisl in. Ac vitae tempor diam maecenas eget at quam. Neque orci arcu amet.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nulla leo rutrum nisl in. Ac vitae tempor diam maecenas eget at quam. Neque orci arcu amet.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nulla leo rutrum nisl in. Ac vitae tempor diam maecenas eget at quam. Neque orci arcu amet.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nulla leo rutrum nisl in. Ac vitae tempor diam maecenas eget at quam. Neque orci arcu amet.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nulla leo rutrum nisl in. Ac vitae tempor diam maecenas eget at quam. Neque orci arcu amet.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nulla leo rutrum nisl in. Ac vitae tempor diam maecenas eget at quam. Neque orci arcu amet.
           </DsDialogue>
           <DsDialogue
             open={doubleButtonOpen}
@@ -108,7 +119,7 @@ class ExamplesDialog extends PureComponent {
             primaryActionButton={<Button>Primary Action</Button>}
             secondaryActionButton={<Button color='secondary'>Secondary Action</Button>}
             tertiaryActionComponennt={
-              <Typography variant='overline'>
+              <Typography variant='supportRegularInfo'>
                 By choosing to agree, I agree to accept all applicable
                 <Typography variant='inherit' component='span' color='primary'> Terms & Conditions </Typography>
                 and
@@ -133,7 +144,7 @@ class ExamplesDialog extends PureComponent {
             headerText='Flushed Button'
             flushedActionButton={<Button>Primary Action</Button>}
             tertiaryActionComponennt={
-              <Typography variant='overline'>
+              <Typography variant='supportRegularInfo'>
                 By choosing to agree, I agree to accept all applicable
                 <Typography variant='inherit' component='span' color='primary'> Terms & Conditions </Typography>
                 and

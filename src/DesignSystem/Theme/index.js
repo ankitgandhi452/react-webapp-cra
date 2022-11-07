@@ -19,5 +19,6 @@ export default function getTheme (colorPalette, mode = 'dark') {
   }
 
   const theme = createTheme(themeConfig)
+  window.theme = theme
   return theme
 }

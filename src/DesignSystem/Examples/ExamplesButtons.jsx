@@ -394,7 +394,7 @@ class ExamplesButtons extends PureComponent {
 
                 }
                 tertiaryActionComponennt={
-                  <Typography variant='overline'>
+                  <Typography variant='supportRegularInfo'>
                     By choosing to agree, I agree to accept all applicable
                     <Typography variant='inherit' component='span' color='primary'> Terms & Conditions </Typography>
                     and
@@ -417,7 +417,7 @@ class ExamplesButtons extends PureComponent {
                   </Button>
                 }
                 tertiaryActionComponennt={
-                  <Typography variant='overline'>
+                  <Typography variant='supportRegularInfo'>
                     By choosing to agree, I agree to accept all applicable
                     <Typography variant='inherit' component='span' color='primary'> Terms & Conditions </Typography>
                     and

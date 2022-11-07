@@ -1,8 +1,46 @@
 import { experimental_sx as sx, inputLabelClasses, inputBaseClasses } from '@mui/material'
 import dsSpacing, { getSpacingPX } from './spacing'
 
-export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
+export default function getComponents(dsColor, dsTypo, calculateLinerHeight) {
   const components = {
+    MuiIconButton: {
+      variants: [
+        {
+          props: { variant: 'app-bar' },
+          style: sx({
+            p: dsSpacing.deepfreeze,
+            height: 24,
+            width: 24,
+            fontSize: 18,
+            color: 'inherit',
+            '> * ': {
+              height: '100% !important',
+              width: '100% !important',
+              fontSize: 'inherit !important'
+            }
+          })
+        }
+      ]
+    },
+    // Appbar Component
+    MuiAppBar: {
+      defaultProps: {
+        color: 'surface'
+      }
+    },
+    MuiToolbar: {
+      styleOverrides: {
+        root: sx({
+          p: dsSpacing.bittercold,
+          minHeight: '56px',
+          '@media (min-width: 0px)': {
+            p: dsSpacing.bittercold,
+            minHeight: '56px'
+          }
+        })
+      }
+    },
+    // Alert Component
     MuiAlert: {
       defaultProps: {
         variant: 'filled',
@@ -48,6 +86,8 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
         })
       }
     },
+
+    // Chip Component
     MuiChip: {
       defaultProps: {
         size: 'small',
@@ -164,6 +204,8 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
         })
       }
     },
+
+    // Dialog Component
     MuiDialog: {
       defaultProps: {
         scroll: 'paper',
@@ -222,6 +264,8 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
         })
       }
     },
+
+    // Avatar Component
     MuiAvatar: {
       variants: [
         {
@@ -271,6 +315,8 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
         size: 'L'
       }
     },
+
+    // Input Component
     MuiInputAdornment: {
       styleOverrides: {
         root: {
@@ -367,31 +413,37 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
         })
       }
     },
+
+    // Typography Component
     MuiTypography: {
       defaultProps: {
         variantMapping: {
-          h2: 'h2',
-          h3: 'h3',
-          h4: 'h4',
-          h5: 'h5',
-          h6: 'h6',
-          subtitle1: 'h6',
-          subtitle2: 'h6',
-          body1: 'p',
-          body2: 'p',
-          body3: 'p',
-          overline: 'p',
-          footnote: 'p',
-          caption: 'p',
-          inherit: 'p'
+          headingBoldExtralarge: 'h2',
+          headingBoldLarge: 'h3',
+          headingBoldMedium: 'h4',
+          headingBoldSmall: 'h5',
+          headingBoldExtrasmall: 'h6',
+          subheadingSemiboldLarge: 'h6',
+          subheadingSemiboldDefault: 'h6',
+          bodyRegularLarge: 'p',
+          bodyRegularMedium: 'p',
+          bodyRegularSmall: 'p',
+          supportBoldTextbutton: 'p',
+          supportRegularInfo: 'p',
+          supportRegularFootnote: 'p',
+          supportRegularMetadata: 'p'
         }
       }
     },
+
+    // Card Component
     MuiPaper: {
       defaultProps: {
         elevation: 1
       }
     },
+
+    // Button Component
     MuiButton: {
       variants: [
         {
@@ -431,7 +483,6 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
           textTransform: 'none'
         },
         text: {
-          minWidth: '100px',
           '&:disabled': {
             color: dsColor.typoDisabled
           },
