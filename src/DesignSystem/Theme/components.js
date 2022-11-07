@@ -1,7 +1,8 @@
 import { experimental_sx as sx, inputLabelClasses, inputBaseClasses } from '@mui/material'
 import dsSpacing, { getSpacingPX } from './spacing'
+import dsRules from './rules'
 
-export default function getComponents(dsColor, dsTypo, calculateLinerHeight) {
+export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
   const components = {
     MuiIconButton: {
       variants: [
@@ -9,9 +10,9 @@ export default function getComponents(dsColor, dsTypo, calculateLinerHeight) {
           props: { variant: 'app-bar' },
           style: sx({
             p: dsSpacing.deepfreeze,
-            height: 24,
-            width: 24,
-            fontSize: 18,
+            height: dsRules.appBarIconBtnHeight,
+            width: dsRules.appBarIconBtnWidth,
+            fontSize: dsRules.appBarIconBtnFontSize,
             color: 'inherit',
             '> * ': {
               height: '100% !important',
@@ -32,10 +33,10 @@ export default function getComponents(dsColor, dsTypo, calculateLinerHeight) {
       styleOverrides: {
         root: sx({
           p: dsSpacing.bittercold,
-          minHeight: '56px',
+          minHeight: dsRules.appBarMobileMinHeight,
           '@media (min-width: 0px)': {
             p: dsSpacing.bittercold,
-            minHeight: '56px'
+            minHeight: dsRules.appBarMobileMinHeight
           }
         })
       }
@@ -219,7 +220,7 @@ export default function getComponents(dsColor, dsTypo, calculateLinerHeight) {
           boxShadow: '0px 24px 40px rgba(0, 0, 0, 0.08)'
         }),
         paperWidthXs: {
-          maxWidth: '288px'
+          maxWidth: dsRules.dialogXsMaxWidth
         }
       }
     },
@@ -271,43 +272,43 @@ export default function getComponents(dsColor, dsTypo, calculateLinerHeight) {
         {
           props: { size: 'S' },
           style: {
-            width: '24px',
-            height: '24px'
+            width: dsRules.avatarSSize,
+            height: dsRules.avatarSSize
           }
         },
         {
           props: { size: 'M' },
           style: {
-            width: '32px',
-            height: '32px'
+            width: dsRules.avatarMSize,
+            height: dsRules.avatarMSize
           }
         },
         {
           props: { size: 'L' },
           style: {
-            width: '40px',
-            height: '40px'
+            width: dsRules.avatarLSize,
+            height: dsRules.avatarLSize
           }
         },
         {
           props: { size: 'XL' },
           style: {
-            width: '48px',
-            height: '48px'
+            width: dsRules.avatarXLSize,
+            height: dsRules.avatarXLSize
           }
         },
         {
           props: { size: 'XXL' },
           style: {
-            width: '64px',
-            height: '64px'
+            width: dsRules.avatarXXLSize,
+            height: dsRules.avatarXXLSize
           }
         },
         {
           props: { size: '3XL' },
           style: {
-            width: '80px',
-            height: '80px'
+            width: dsRules.avatar3XLSize,
+            height: dsRules.avatar3XLSize
           }
         }
       ],
