@@ -8,7 +8,7 @@ class ExamplesButtons extends PureComponent {
   render() {
     return (
       <>
-        <Paper sx={{ p: 6 }}>
+        <Paper sx={{ p: 6, backgroundColor: 'inherit' }}>
           <Grid container spacing={2}>
             <Grid item xs={6}>
               <Button
@@ -93,7 +93,7 @@ class ExamplesButtons extends PureComponent {
             </Grid>
           </Grid>
         </Paper>
-        <Paper sx={{ p: 6 }}>
+        <Paper sx={{ p: 6, backgroundColor: 'inherit' }}>
           <Grid container spacing={2}>
             <Grid item xs={6}>
               <Button
@@ -167,7 +167,7 @@ class ExamplesButtons extends PureComponent {
             </Grid>
           </Grid>
         </Paper>
-        <Paper sx={{ p: 6 }}>
+        <Paper sx={{ p: 6, backgroundColor: 'inherit' }}>
           <Grid container spacing={2}>
             <Grid item xs={6}>
               <Button
@@ -241,7 +241,7 @@ class ExamplesButtons extends PureComponent {
             </Grid>
           </Grid>
         </Paper>
-        <Paper sx={{ p: 6 }}>
+        <Paper sx={{ p: 6, backgroundColor: 'inherit' }}>
           <Grid container spacing={2}>
             <Grid item xs={6}>
               <Button
@@ -266,7 +266,7 @@ class ExamplesButtons extends PureComponent {
             </Grid>
           </Grid>
         </Paper>
-        <Paper sx={{ p: 6 }}>
+        <Paper sx={{ p: 6, backgroundColor: 'inherit' }}>
           <Grid container spacing={2}>
             <Grid item xs={4}>
               <Button
@@ -299,7 +299,7 @@ class ExamplesButtons extends PureComponent {
             </Grid>
           </Grid>
         </Paper>
-        <Paper sx={{ p: 6 }}>
+        <Paper sx={{ p: 6, backgroundColor: 'inherit' }}>
           <Grid container spacing={2}>
             <Grid item xs={4}>
               <Button
@@ -332,7 +332,7 @@ class ExamplesButtons extends PureComponent {
             </Grid>
           </Grid>
         </Paper>
-        <Paper sx={{ p: 6 }}>
+        <Paper sx={{ p: 6, backgroundColor: 'inherit' }}>
           <Grid container spacing={2}>
             <Grid item xs={12} lg={4}>
               <DsButtonGroup

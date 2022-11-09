@@ -126,7 +126,7 @@ const palettes = {
   }
 }
 
-const mode = 'dark'
+const mode = 'light'
 const colorPalette = palettes[mode]
 const AppTheme = getTheme(colorPalette, mode)
 

@@ -11,16 +11,18 @@ import dsSpacing from '../Theme/spacing'
 
 export default class DsAppBar extends PureComponent {
   static propTypes = {
+    open: PropTypes.bool,
     leftIcon: PropTypes.element,
     content: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     rightActions: PropTypes.arrayOf(PropTypes.element)
   }
 
   static defaultProps = {
+    open: false,
     content: ''
   }
 
-  render() {
+  render () {
     const {
       leftIcon,
       content,
@@ -30,7 +32,7 @@ export default class DsAppBar extends PureComponent {
 
     const contentJSX = typeof content === 'string' ? <Typography variant='headingBoldSmall'>{content}</Typography> : content
     return (
-      <AppBar {...appBarProps} enableColorOnDark>
+      <AppBar {...appBarProps}>
         <Toolbar>
           {
             leftIcon && (

@@ -2,8 +2,88 @@ import { experimental_sx as sx, inputLabelClasses, inputBaseClasses } from '@mui
 import dsSpacing, { getSpacingPX } from './spacing'
 import dsRules from './rules'
 
+const DRAWER_WIDTH = 240
+const MINI_DRAWER_WIDTH = 56
 export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
   const components = {
+    MuiListItemButton: {
+      variants: [
+        {
+          props: { dsVariant: 'mini-drawer' },
+          style: sx({
+            pl: dsSpacing.zero
+          })
+        }
+      ]
+    },
+    MuiListItemIcon: {
+      variants: [
+        {
+          props: { dsVariant: 'mini-drawer' },
+          style: sx({
+            width: MINI_DRAWER_WIDTH
+          })
+        }
+      ]
+    },
+    MuiDrawer: {
+      variants: [
+        {
+          props: { dsVariant: 'mini-drawer' },
+          style: ({ ownerState, theme }) => {
+            return {
+              width: DRAWER_WIDTH,
+              flexShrink: 0,
+              whiteSpace: 'nowrap',
+              boxSizing: 'border-box',
+              ...(ownerState.open && {
+                width: DRAWER_WIDTH,
+                transition: theme.transitions.create('width', {
+                  easing: theme.transitions.easing.sharp,
+                  duration: theme.transitions.duration.enteringScreen
+                }),
+                overflowX: 'hidden',
+                '& .MuiDrawer-paper': {
+                  width: DRAWER_WIDTH,
+                  transition: theme.transitions.create('width', {
+                    easing: theme.transitions.easing.sharp,
+                    duration: theme.transitions.duration.enteringScreen
+                  }),
+                  overflowX: 'hidden'
+                }
+              }),
+              ...(!ownerState.open && {
+                transition: theme.transitions.create('width', {
+                  easing: theme.transitions.easing.sharp,
+                  duration: theme.transitions.duration.leavingScreen
+                }),
+                overflowX: 'hidden',
+                width: 0,
+                [theme.breakpoints.up('sm')]: {
+                  width: MINI_DRAWER_WIDTH
+                },
+                '& .MuiDrawer-paper': {
+                  transition: theme.transitions.create('width', {
+                    easing: theme.transitions.easing.sharp,
+                    duration: theme.transitions.duration.leavingScreen
+                  }),
+                  overflowX: 'hidden',
+                  width: 0,
+                  [theme.breakpoints.up('sm')]: {
+                    width: MINI_DRAWER_WIDTH
+                  }
+                }
+              })
+            }
+          }
+        }
+      ],
+      styleOverrides: {
+        paper: sx({
+          backgroundColor: dsColor.surfaceBackground
+        })
+      }
+    },
     MuiIconButton: {
       variants: [
         {
@@ -25,8 +105,44 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
     },
     // Appbar Component
     MuiAppBar: {
+      variants: [
+        {
+          props: { dsVariant: 'mini-drawer' },
+          style: ({ ownerState, theme }) => {
+            return {
+              zIndex: theme.zIndex.drawer + 1,
+              transition: theme.transitions.create(['width', 'margin'], {
+                easing: theme.transitions.easing.sharp,
+                duration: theme.transitions.duration.leavingScreen
+              }),
+              ...(ownerState.open && {
+                marginLeft: DRAWER_WIDTH,
+                width: `calc(100% - ${DRAWER_WIDTH}px)`,
+                transition: theme.transitions.create(['width', 'margin'], {
+                  easing: theme.transitions.easing.sharp,
+                  duration: theme.transitions.duration.enteringScreen
+                })
+              })
+            }
+          }
+        }
+      ],
       defaultProps: {
-        color: 'surface'
+        color: 'surface',
+        enableColorOnDark: true,
+        elevation: 0
+      },
+      styleOverrides: {
+        root: {
+          borderWidth: '1px',
+          borderStyle: 'solid'
+        },
+        colorSurface: {
+          borderColor: dsColor.strokeDefault
+        },
+        colorPrimary: {
+          borderColor: dsColor.actionPrimary
+        }
       }
     },
     MuiToolbar: {
@@ -52,25 +168,29 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
           borderRadius: '4px',
           borderWidth: '1px',
           borderStyle: 'solid',
-          borderColor: dsColor.strokeDefault,
           boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)'
         }),
         filled: sx({
           color: dsColor.typoOnSurface
         }),
         filledSuccess: sx({
+          borderColor: dsColor.supportPositive,
           backgroundColor: dsColor.supportPositive
         }),
         filledInfo: sx({
+          borderColor: dsColor.supportTypical,
           backgroundColor: dsColor.supportTypical
         }),
         filledWarning: sx({
+          borderColor: dsColor.supportWarning,
           backgroundColor: dsColor.supportWarning
         }),
         filledError: sx({
+          borderColor: dsColor.supportNegative,
           backgroundColor: dsColor.supportNegative
         }),
         outlined: sx({
+          borderColor: dsColor.surfaceBackground,
           backgroundColor: dsColor.surfaceBackground
         }),
         outlinedSuccess: sx({
