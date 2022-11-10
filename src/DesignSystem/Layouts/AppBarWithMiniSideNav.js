@@ -119,7 +119,6 @@ export default class AppBarWithMiniSideNav extends React.Component {
           component='main'
           sx={{
             flexGrow: 1,
-            bgcolor: 'background.default',
             p: dsSpacing.mild
           }}
         >
