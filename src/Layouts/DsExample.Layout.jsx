@@ -9,20 +9,21 @@ import withRouter from 'src/Lib/withRouter'
 
 class DsExampleLayout extends Component {
   static contextType = UNSAFE_DataRouterContext
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.handleNavlinkClick = this.handleNavlinkClick.bind(this)
   }
 
-  handleNavlinkClick (navlink) {
+  handleNavlinkClick(navlink) {
     const { location, navigate } = this.props
     const route = `${location.pathname}?componentId=${navlink.componentId}`
     navigate(route)
   }
 
-  render () {
+  render() {
     const { searchParams } = this.props
+    const pageName = searchParams.get('componentId')
     return (
       <AppBarWithMiniSideNav
         sideNavProps={{
@@ -31,7 +32,7 @@ class DsExampleLayout extends Component {
         }}
         appBarProps={{
           leftIcon: <MenuIcon />,
-          content: 'DsExampleLayout'
+          content: pageName
         }}
       >
         <Outlet key={searchParams} />
