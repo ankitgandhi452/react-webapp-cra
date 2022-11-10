@@ -1,8 +1,8 @@
 import * as React from 'react'
+import PropTypes from 'prop-types'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
 
 import ExamplesButtons from 'src/DesignSystem/Examples/ExamplesButtons'
 import ExamplesTextField from 'src/DesignSystem/Examples/ExamplesTextField'
@@ -16,100 +16,59 @@ import ExamplesAppBar from 'src/DesignSystem/Examples/ExamplesAppBar'
 import DsAppBar from 'src/DesignSystem/Components/DsAppBar'
 import DsSideNav from 'src/DesignSystem/Components/DsSideNav'
 
-import MenuIcon from '@mui/icons-material/Menu'
-import ViewHeadlineIcon from '@mui/icons-material/ViewHeadline'
-import NotificationsIcon from '@mui/icons-material/Notifications'
-import ErrorIcon from '@mui/icons-material/Error'
-import LabelIcon from '@mui/icons-material/Label'
-import PictureInPictureIcon from '@mui/icons-material/PictureInPicture'
-import AccessibilityIcon from '@mui/icons-material/Accessibility'
-import TextFieldsIcon from '@mui/icons-material/TextFields'
-import GamepadIcon from '@mui/icons-material/Gamepad'
-
 import { isMobileDevice } from '../Utils/browser'
+import dsSpacing from '../Theme/spacing'
 
 const DEFAUT_DESKTOP_OPEN = false
-const NAVLINKS = [
-  {
-    Icon: ViewHeadlineIcon,
-    title: 'App Bar',
-    compopnentId: 'APP_BAR'
-  },
-  {
-    Icon: NotificationsIcon,
-    title: 'Notifications',
-    compopnentId: 'NOTIFICATIONS'
-  },
-  {
-    Icon: ErrorIcon,
-    title: 'Alerts',
-    compopnentId: 'ALERTS'
-  },
-  {
-    Icon: LabelIcon,
-    title: 'Chips',
-    compopnentId: 'CHIPS'
-  },
-  {
-    Icon: PictureInPictureIcon,
-    title: 'Dialog',
-    compopnentId: 'DIALOG'
-  },
-  {
-    Icon: AccessibilityIcon,
-    title: 'Avatar',
-    compopnentId: 'AVATAR'
-  },
-  {
-    Icon: TextFieldsIcon,
-    title: 'Text Fields',
-    compopnentId: 'TEXTFIELDS'
-  },
-  {
-    Icon: GamepadIcon,
-    title: 'Buttons',
-    compopnentId: 'BUTTONS'
-  }
-]
-
-const COMPONENTS_MAP = {
-  APP_BAR: ExamplesAppBar,
-  NOTIFICATIONS: ExamplesNotification,
-  ALERTS: ExamplesAlerts,
-  CHIPS: ExamplesChips,
-  DIALOG: ExamplesDialog,
-  AVATAR: ExamplesAvatars,
-  TEXTFIELDS: ExamplesTextField,
-  BUTTONS: ExamplesButtons
-}
 
 export default class AppBarWithMiniSideNav extends React.Component {
-  constructor(props) {
+  static propTypes = {
+    sideNavProps: PropTypes.shape({
+      navLinks: PropTypes.arrayOf(
+        PropTypes.shape({
+          Icon: PropTypes.elementType,
+          title: PropTypes.string
+        })
+      ),
+      onNavlinkClick: PropTypes.func
+    }),
+    appBarProps: PropTypes.shape({
+      leftIcon: PropTypes.element,
+      content: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+      rightActions: PropTypes.arrayOf(PropTypes.element)
+    })
+  }
+
+  static defaultProps = {
+    sideNavProps: {
+      navLinks: []
+    },
+    appBarProps: {}
+  }
+
+  constructor (props) {
     super(props)
 
     const isMobileFlag = isMobileDevice()
     this.state = {
       drawerOpen: (isMobileFlag && false) || DEFAUT_DESKTOP_OPEN,
-      isMobile: isMobileFlag,
-      selected: 'APP_BAR'
+      isMobile: isMobileFlag
     }
 
     this.handleDrawerOpen = this.handleDrawerOpen.bind(this)
     this.handleDrawerClose = this.handleDrawerClose.bind(this)
-    this.handleNavlinkClick = this.handleNavlinkClick.bind(this)
     this.handleDrawerOnResize = this.handleDrawerOnResize.bind(this)
-    this.renderSelectedComponent = this.renderSelectedComponent.bind(this)
   }
 
-  componentDidMount() {
+  componentDidMount () {
     window.addEventListener('resize', this.handleDrawerOnResize)
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     window.removeEventListener('resize', this.handleDrawerOnResize)
   }
 
-  handleDrawerOnResize() {
+  handleDrawerOnResize () {
     const { isMobile, drawerOpen } = this.state
     const isMobileFlag = isMobileDevice()
     const changeDrawerOpen = (isMobileFlag && drawerOpen) || DEFAUT_DESKTOP_OPEN
@@ -128,62 +87,53 @@ export default class AppBarWithMiniSideNav extends React.Component {
     }
   }
 
-  handleDrawerOpen() {
+  handleDrawerOpen () {
     this.setState({ drawerOpen: true })
   }
 
-  handleDrawerClose() {
+  handleDrawerClose () {
     this.setState({ drawerOpen: false })
   }
 
-  handleNavlinkClick(navLink) {
-    const { compopnentId } = navLink
-    this.setState({ selected: compopnentId })
-  }
-
-  renderSelectedComponent() {
-    const { selected } = this.state
-    const Component = COMPONENTS_MAP[selected]
-    return <Component />
-  }
-
-  render() {
+  render () {
     const { isMobile, drawerOpen } = this.state
+    const { sideNavProps, appBarProps, children } = this.props
+    const { leftIcon, ...restAppBarProps } = appBarProps
+    const { onNavlinkClick } = sideNavProps
 
-    const appBarProps = (!isMobile && { dsVariant: 'mini-drawer' }) || {}
-    const drawerProps = (!isMobile && { dsVariant: 'mini-drawer', variant: 'permanent' }) || { variant: 'temporary' }
-    console.log('this.state', this.state)
-    console.log('drawerProps', drawerProps)
+    const appBarPropsOverride = (!isMobile && { dsVariant: 'mini-drawer' }) || {}
+    const sideNavPropsOveride = (!isMobile && { dsVariant: 'mini-drawer', variant: 'permanent' }) || { variant: 'temporary' }
+
     return (
       <Box sx={{ display: 'flex' }}>
         <DsAppBar
-          {...appBarProps}
+          {...restAppBarProps}
+          {...appBarPropsOverride}
           position='fixed'
           open={drawerOpen}
           leftIcon={
             <IconButton onClick={this.handleDrawerOpen}>
-              <MenuIcon />
+              {leftIcon}
             </IconButton>
-          }
-          content={
-            <Typography variant='h6' noWrap component='div'>
-              Permanent drawer
-            </Typography>
           }
         />
         <DsSideNav
-          {...drawerProps}
+          {...sideNavProps}
+          {...sideNavPropsOveride}
           open={drawerOpen}
           onDrawerclose={this.handleDrawerClose}
-          onNavlinkClick={this.handleNavlinkClick}
-          navLinks={NAVLINKS}
+          onNavlinkClick={onNavlinkClick}
         />
         <Box
           component='main'
-          sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
+          sx={{
+            flexGrow: 1,
+            bgcolor: 'background.default',
+            p: dsSpacing.mild
+          }}
         >
           <Toolbar />
-          {this.renderSelectedComponent()}
+          {children}
         </Box>
       </Box>
     )

@@ -12,7 +12,7 @@ const rightActions = [
 ]
 
 class ExamplesAppBar extends PureComponent {
-  render() {
+  render () {
     return (
       <Grid direction='column' container spacing={4}>
         <Grid container direction='row' item spacing={4}>

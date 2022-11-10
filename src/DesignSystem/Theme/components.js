@@ -535,28 +535,6 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
       }
     },
 
-    // Typography Component
-    MuiTypography: {
-      defaultProps: {
-        variantMapping: {
-          headingBoldExtralarge: 'h2',
-          headingBoldLarge: 'h3',
-          headingBoldMedium: 'h4',
-          headingBoldSmall: 'h5',
-          headingBoldExtrasmall: 'h6',
-          subheadingSemiboldLarge: 'h6',
-          subheadingSemiboldDefault: 'h6',
-          bodyRegularLarge: 'p',
-          bodyRegularMedium: 'p',
-          bodyRegularSmall: 'p',
-          supportBoldTextbutton: 'p',
-          supportRegularInfo: 'p',
-          supportRegularFootnote: 'p',
-          supportRegularMetadata: 'p'
-        }
-      }
-    },
-
     // Card Component
     MuiPaper: {
       defaultProps: {

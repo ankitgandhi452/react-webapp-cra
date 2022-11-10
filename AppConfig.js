@@ -4,7 +4,7 @@ const AppConfig = {
   appInfo: {
     appName: process.env.REACT_APP_APP_TITLE,
     shortName: 'React Webapp CRA',
-    appDescription: process.env.REACT_APP_APP_DESCRIPTION,
+    appDescription: process.env.REACT_APP_APP_DESCRIPTION
   },
   theme: {
     background: '#000000',

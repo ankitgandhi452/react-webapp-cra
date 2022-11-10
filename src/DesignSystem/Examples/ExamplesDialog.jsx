@@ -6,7 +6,7 @@ import DsDialogue from '../Components/DsDialogue'
 import { Stack } from '@mui/system'
 
 class ExamplesDialog extends PureComponent {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.state = {
@@ -25,27 +25,27 @@ class ExamplesDialog extends PureComponent {
     this.handleClose = this.handleClose.bind(this)
   }
 
-  handleSingleButtonOpen() {
+  handleSingleButtonOpen () {
     this.setState({ singleButtonOpen: true })
   }
 
-  handleDoubleButtonOpen() {
+  handleDoubleButtonOpen () {
     this.setState({ doubleButtonOpen: true })
   }
 
-  handleTripleButtonOpen() {
+  handleTripleButtonOpen () {
     this.setState({ tripleButtonOpen: true })
   }
 
-  handleFlushedButtonOpen() {
+  handleFlushedButtonOpen () {
     this.setState({ flushedButtonOpen: true })
   }
 
-  handleFlushedTripleButtonOpen() {
+  handleFlushedTripleButtonOpen () {
     this.setState({ flushedTripleButtonOpen: true })
   }
 
-  handleClose() {
+  handleClose () {
     this.setState({
       singleButtonOpen: false,
       doubleButtonOpen: false,
@@ -55,7 +55,7 @@ class ExamplesDialog extends PureComponent {
     })
   }
 
-  render() {
+  render () {
     const {
       singleButtonOpen,
       doubleButtonOpen,

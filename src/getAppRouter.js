@@ -13,7 +13,7 @@ import {
 import { checkIfLoggedIn } from './Utils/authentication'
 
 const AuthLayout = React.lazy(() => import('src/Layouts/Auth.Layout'))
-const AppBarWithMiniSideNav = React.lazy(() => import('./DesignSystem/Layouts/AppBarWithMiniSideNav'))
+const DsExampleLayout = React.lazy(() => import('src/Layouts/DsExample.Layout'))
 const UnauthLayout = React.lazy(() => import('src/Layouts/Unauth.Layout'))
 const HomePage = React.lazy(() => import('src/Pages/Home/Home.Container'))
 const LoginPage = React.lazy(() => import('src/Pages/Login/Login.Container'))
@@ -71,7 +71,7 @@ const getAppRouter = () => createBrowserRouter([
     ]
   },
   {
-    element: <AppBarWithMiniSideNav />,
+    element: <DsExampleLayout />,
     children: [
       {
         path: EXAMPLES_PAGE,

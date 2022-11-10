@@ -18,7 +18,7 @@ export default class DsSideNav extends PureComponent {
   static propTypes = {
     navLinks: PropTypes.arrayOf(
       PropTypes.shape({
-        Icon: PropTypes.element,
+        Icon: PropTypes.elementType,
         title: PropTypes.string
       })
     ),

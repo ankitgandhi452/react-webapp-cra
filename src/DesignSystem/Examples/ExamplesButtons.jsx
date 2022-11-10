@@ -5,7 +5,7 @@ import { Paper, Button, Grid, Typography } from '@mui/material'
 import SendIcon from '@mui/icons-material/Send'
 import DsButtonGroup from '../Components/DsButtonGroup'
 class ExamplesButtons extends PureComponent {
-  render() {
+  render () {
     return (
       <>
         <Paper sx={{ p: 6, backgroundColor: 'inherit' }}>
