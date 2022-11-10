@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Paper, Grid, Avatar } from '@mui/material'
+import { Grid, Avatar } from '@mui/material'
 
 import avatarImage from './assets/avatar.png'
 

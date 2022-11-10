@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react'
 import { PropTypes } from 'prop-types'
-import { styled } from '@mui/material/styles'
 
 import Drawer from '@mui/material/Drawer'
 import IconButton from '@mui/material/IconButton'

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Outlet, UNSAFE_DataRouterContext } from 'react-router-dom'
-import DsExample, { NAVLINKS } from 'src/DesignSystem/Examples'
+import { NAVLINKS } from 'src/DesignSystem/Examples'
 import AppBarWithMiniSideNav from 'src/DesignSystem/Layouts/AppBarWithMiniSideNav'
 
 import MenuIcon from '@mui/icons-material/Menu'

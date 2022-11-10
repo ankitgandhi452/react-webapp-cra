@@ -4,15 +4,6 @@ import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
 
-import ExamplesButtons from 'src/DesignSystem/Examples/ExamplesButtons'
-import ExamplesTextField from 'src/DesignSystem/Examples/ExamplesTextField'
-import ExamplesAvatars from 'src/DesignSystem/Examples/ExamplesAvatars'
-import ExamplesDialog from 'src/DesignSystem/Examples/ExamplesDialog'
-import ExamplesChips from 'src/DesignSystem/Examples/ExamplesChips'
-import ExamplesAlerts from 'src/DesignSystem/Examples/ExamplesAlerts'
-import ExamplesNotification from 'src/DesignSystem/Examples/ExamplesNotification'
-import ExamplesAppBar from 'src/DesignSystem/Examples/ExamplesAppBar'
-
 import DsAppBar from 'src/DesignSystem/Components/DsAppBar'
 import DsSideNav from 'src/DesignSystem/Components/DsSideNav'
 
