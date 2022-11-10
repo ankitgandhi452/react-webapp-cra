@@ -27,14 +27,16 @@ export default class AppBarWithMiniSideNav extends React.Component {
       leftIcon: PropTypes.element,
       content: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
       rightActions: PropTypes.arrayOf(PropTypes.element)
-    })
+    }),
+    backgroundColor: PropTypes.string
   }
 
   static defaultProps = {
     sideNavProps: {
       navLinks: []
     },
-    appBarProps: {}
+    appBarProps: {},
+    backgroundColor: 'dsColor.surfaceSecondary'
   }
 
   constructor (props) {
@@ -43,7 +45,8 @@ export default class AppBarWithMiniSideNav extends React.Component {
     const isMobileFlag = isMobileDevice()
     this.state = {
       drawerOpen: (isMobileFlag && false) || DEFAUT_DESKTOP_OPEN,
-      isMobile: isMobileFlag
+      isMobile: isMobileFlag,
+      height: window.innerHeight
     }
 
     this.handleDrawerOpen = this.handleDrawerOpen.bind(this)
@@ -60,9 +63,10 @@ export default class AppBarWithMiniSideNav extends React.Component {
   }
 
   handleDrawerOnResize () {
-    const { isMobile, drawerOpen } = this.state
+    const { isMobile, drawerOpen, height } = this.state
     const isMobileFlag = isMobileDevice()
     const changeDrawerOpen = (isMobileFlag && drawerOpen) || DEFAUT_DESKTOP_OPEN
+    const changeHeight = window.innerHeight
     const newState = {}
 
     if (drawerOpen !== changeDrawerOpen) {
@@ -71,6 +75,10 @@ export default class AppBarWithMiniSideNav extends React.Component {
 
     if (isMobile !== isMobileFlag) {
       newState.isMobile = isMobileFlag
+    }
+
+    if (changeHeight !== height) {
+      newState.height = changeHeight
     }
 
     if (Object.keys(newState).length) {
@@ -87,8 +95,8 @@ export default class AppBarWithMiniSideNav extends React.Component {
   }
 
   render () {
-    const { isMobile, drawerOpen } = this.state
-    const { sideNavProps, appBarProps, children } = this.props
+    const { isMobile, drawerOpen, height } = this.state
+    const { sideNavProps, appBarProps, backgroundColor, children } = this.props
     const { leftIcon, ...restAppBarProps } = appBarProps
     const { onNavlinkClick } = sideNavProps
 
@@ -119,7 +127,10 @@ export default class AppBarWithMiniSideNav extends React.Component {
           component='main'
           sx={{
             flexGrow: 1,
-            p: dsSpacing.mild
+            p: dsSpacing.mild,
+            backgroundColor,
+            height,
+            overflowY: 'auto'
           }}
         >
           <Toolbar />
