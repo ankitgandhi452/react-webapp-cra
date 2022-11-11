@@ -28,7 +28,8 @@ export default class AppBarWithMiniSideNav extends React.Component {
       content: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
       rightActions: PropTypes.arrayOf(PropTypes.element)
     }),
-    backgroundColor: PropTypes.string
+    backgroundColor: PropTypes.string,
+    miniSideNav: PropTypes.bool
   }
 
   static defaultProps = {
@@ -36,7 +37,8 @@ export default class AppBarWithMiniSideNav extends React.Component {
       navLinks: []
     },
     appBarProps: {},
-    backgroundColor: 'dsColor.surfaceSecondary'
+    backgroundColor: 'dsColor.surfaceSecondary',
+    miniSideNav: true
   }
 
   constructor (props) {
@@ -96,12 +98,12 @@ export default class AppBarWithMiniSideNav extends React.Component {
 
   render () {
     const { isMobile, drawerOpen, height } = this.state
-    const { sideNavProps, appBarProps, backgroundColor, children } = this.props
+    const { sideNavProps, appBarProps, backgroundColor, miniSideNav, children } = this.props
     const { leftIcon, ...restAppBarProps } = appBarProps
     const { onNavlinkClick } = sideNavProps
 
-    const appBarPropsOverride = (!isMobile && { dsVariant: 'mini-drawer' }) || {}
-    const sideNavPropsOveride = (!isMobile && { dsVariant: 'mini-drawer', variant: 'permanent' }) || { variant: 'temporary' }
+    const appBarPropsOverride = ((miniSideNav && !isMobile) && { dsVariant: 'mini-drawer' }) || {}
+    const sideNavPropsOveride = ((miniSideNav && !isMobile) && { dsVariant: 'mini-drawer', variant: 'permanent' }) || { variant: 'temporary' }
 
     return (
       <Box sx={{ display: 'flex' }}>
