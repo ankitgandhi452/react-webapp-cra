@@ -9,14 +9,50 @@ import {
   HOME_PAGE,
 
   EXAMPLES_PAGE
-} from './Constants/APP_ROUTES'
-import { checkIfLoggedIn } from './Utils/authentication'
+} from 'src/Constants/APP_ROUTES'
+import { checkIfLoggedIn } from 'src/Utils/authentication'
 
-const AuthLayout = React.lazy(() => import('src/Layouts/Auth.Layout'))
-const DsExampleLayout = React.lazy(() => import('src/Layouts/DsExample.Layout'))
-const UnauthLayout = React.lazy(() => import('src/Layouts/Unauth.Layout'))
-const HomePage = React.lazy(() => import('src/Pages/Home/Home.Container'))
-const LoginPage = React.lazy(() => import('src/Pages/Login/Login.Container'))
+const AuthLayout = React.lazy(
+  () => import(
+    /* webpackChunkName: "AuthLayout" */
+    /* webpackMode: "lazy" */
+    /* webpackPreload: true */
+    'src/Layouts/Auth.Layout'
+  )
+)
+const DsExampleLayout = React.lazy(
+  () => import(
+    /* webpackChunkName: "DsExampleLayout" */
+    /* webpackMode: "lazy" */
+    /* webpackPreload: true */
+    'src/Layouts/DsExample.Layout'
+  )
+)
+const UnauthLayout = React.lazy(
+  () => import(
+    /* webpackChunkName: "DsExampleLayout" */
+    /* webpackMode: "lazy" */
+    /* webpackPreload: true */
+    'src/Layouts/Unauth.Layout'
+  )
+)
+
+const HomePage = React.lazy(
+  () => import(
+    /* webpackChunkName: "HomePage" */
+    /* webpackMode: "lazy" */
+    /* webpackPreload: true */
+    'src/Pages/Home/Home.Container'
+  )
+)
+const LoginPage = React.lazy(
+  () => import(
+    /* webpackChunkName: "LoginPage" */
+    /* webpackMode: "lazy" */
+    /* webpackPreload: true */
+    'src/Pages/Login/Login.Container'
+  )
+)
 
 const ExamplesPage = React.lazy(() => import('src/DesignSystem/Examples'))
 

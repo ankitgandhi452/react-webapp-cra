@@ -1,4 +1,4 @@
-import AppStore from 'src/AppStore'
+import AppStore from 'src/Configurations/AppStore'
 import { SLICE_NAME as AUTH_SLICE_NAME } from 'src/Reducers/Auth'
 
 export const checkIfLoggedIn = () => {

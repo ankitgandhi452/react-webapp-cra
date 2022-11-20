@@ -1,6 +1,6 @@
-export default function getTypography () {
+export default function getTypography(fontFamilyName = '') {
   const dsTypoPrimitive = {
-    primaryFont: 'Lato',
+    primaryFont: fontFamilyName,
 
     fontsizeScorched: '76px',
     fontsizeTorrid: '56px',
@@ -160,7 +160,7 @@ export default function getTypography () {
   return { dsTypo, typography, calculateLinerHeight }
 }
 
-function calculateLinerHeight (fontSizePX, lineHeightTokenPX) {
+function calculateLinerHeight(fontSizePX, lineHeightTokenPX) {
   const fontSize = parseInt(fontSizePX.replace('px', ''), 10)
   const lineHeightToken = parseInt(lineHeightTokenPX.replace('px', ''), 10)
   const lineHeight = fontSize + lineHeightToken

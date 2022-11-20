@@ -5,9 +5,9 @@ import breakpoints from './breakpoints'
 import getComponents from './components'
 import { SPACE_COEFICIENT } from './spacing'
 
-export default function getTheme (colorPalette, mode = 'dark') {
+export default function getTheme(colorPalette, mode = 'dark', fontFamilyName = '') {
   const { palette, dsColor } = getPalette(colorPalette, mode)
-  const { typography, dsTypo, calculateLinerHeight } = getTypography()
+  const { typography, dsTypo, calculateLinerHeight } = getTypography(fontFamilyName)
   const components = getComponents(dsColor, dsTypo, calculateLinerHeight)
 
   const themeConfig = {

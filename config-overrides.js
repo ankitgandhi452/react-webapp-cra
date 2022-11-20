@@ -8,7 +8,9 @@ const {
 } = require('customize-cra')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
+const WebResourceHints = require('./WebResourceHints')
 
+const { REACT_APP_PREECONNECT_DOMAINS = '' } = process.env
 const AppConfig = require('./AppConfig')
 const { appInfo, theme, manifestInfo, favIcons } = AppConfig
 
@@ -65,16 +67,19 @@ const FAVICON_OPTIONS = {
   }
 }
 
+const webResourceHintsOptions = {
+  preconnects: REACT_APP_PREECONNECT_DOMAINS.split(',')
+}
+
 module.exports = {
   webpack: override(
     addWebpackAlias({
       src: path.resolve(__dirname, 'src/')
     }),
     addBundleVisualizer({}, true),
-    addWebpackPlugin(
-      new FaviconsWebpackPlugin(FAVICON_OPTIONS),
-      new WebpackPwaManifest(PWA_MANIFEST_CONFIG)
-    )
+    addWebpackPlugin(new WebResourceHints(webResourceHintsOptions)),
+    addWebpackPlugin(new FaviconsWebpackPlugin(FAVICON_OPTIONS)),
+    addWebpackPlugin(new WebpackPwaManifest(PWA_MANIFEST_CONFIG)),
   ),
   devServer: overrideDevServer()
 }
