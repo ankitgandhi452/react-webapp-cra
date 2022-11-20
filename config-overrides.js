@@ -9,12 +9,17 @@ const {
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
 const WebResourceHints = require('./WebResourceHints')
+const CspHtmlWebpackPlugin = require('csp-html-webpack-plugin')
 
-const { REACT_APP_PREECONNECT_DOMAINS = '' } = process.env
+const {
+  CSP_ENABLED = 'true',
+  REACT_APP_PREECONNECT_DOMAINS = '',
+  REACT_APP_ASSEST_DOMAIN = ''
+} = process.env
 const AppConfig = require('./AppConfig')
 const { appInfo, theme, manifestInfo, favIcons } = AppConfig
 
-const PWA_MANIFEST_CONFIG = {
+const pwaManifestOptions = {
   name: appInfo.appName,
   short_name: appInfo.shortName,
   description: appInfo.appDescription,
@@ -27,7 +32,7 @@ const PWA_MANIFEST_CONFIG = {
   ios: true
 }
 
-const FAVICON_OPTIONS = {
+const faviconOptions = {
   // Your source logo (required)
   logo: favIcons.logo,
   // Enable caching and optionally specify the path to store cached data
@@ -71,6 +76,26 @@ const webResourceHintsOptions = {
   preconnects: REACT_APP_PREECONNECT_DOMAINS.split(',')
 }
 
+const cspPolicy = {
+  'base-uri': "'self'",
+  'object-src': "'none'",
+  'script-src': ["'unsafe-inline'", "'self'", "'unsafe-eval'"],
+  'style-src': ["'unsafe-inline'", "'self'", "'unsafe-eval'", "https://fonts.googleapis.com", `${REACT_APP_ASSEST_DOMAIN}`]
+}
+
+const cspOptions = {
+  enabled: CSP_ENABLED === 'true',
+  hashingMethod: 'sha256',
+  hashEnabled: {
+    'script-src': false,
+    'style-src': false
+  },
+  nonceEnabled: {
+    'script-src': true,
+    'style-src': false
+  }
+}
+
 module.exports = {
   webpack: override(
     addWebpackAlias({
@@ -78,8 +103,9 @@ module.exports = {
     }),
     addBundleVisualizer({}, true),
     addWebpackPlugin(new WebResourceHints(webResourceHintsOptions)),
-    addWebpackPlugin(new FaviconsWebpackPlugin(FAVICON_OPTIONS)),
-    addWebpackPlugin(new WebpackPwaManifest(PWA_MANIFEST_CONFIG)),
+    addWebpackPlugin(new CspHtmlWebpackPlugin(cspPolicy, cspOptions)),
+    addWebpackPlugin(new FaviconsWebpackPlugin(faviconOptions)),
+    addWebpackPlugin(new WebpackPwaManifest(pwaManifestOptions)),
   ),
   devServer: overrideDevServer()
 }
