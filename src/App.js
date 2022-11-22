@@ -24,6 +24,7 @@ import {
 
 import getAppConfig from 'src/Services/AppConfig/getAppConfig'
 import performHandshake from './Services/AppConfig/performHandshake'
+import AppInitError from './Components/AppInitError'
 
 class App extends Component {
   static propTypes = {
@@ -37,6 +38,9 @@ class App extends Component {
   constructor(props) {
     super(props)
 
+    this.state = {
+      hasError: false
+    }
     this.initialize = this.initialize.bind(this)
   }
 
@@ -45,21 +49,23 @@ class App extends Component {
   }
 
   async initialize() {
-    const { actions, minimumLoaderTime } = this.props
-    try {
-      actions.initAppMetaFetchAction()
-      setTimeout(
-        () => { actions.setAppMetaminimumLoaderTimeCompletedAction() },
-        minimumLoaderTime
-      )
-      await performHandshake()
-      const appConfig = await getAppConfig()
-      actions.setAppMetaAction(appConfig)
-      actions.completeAppMetaFetchAction()
-    } catch (error) {
-      console.log('error', error)
-      actions.completeAppMetaFetchAction()
-    }
+    this.setState({ hasError: false }, async () => {
+      const { actions, minimumLoaderTime } = this.props
+      try {
+        actions.initAppMetaFetchAction()
+        setTimeout(
+          () => { actions.setAppMetaminimumLoaderTimeCompletedAction() },
+          minimumLoaderTime
+        )
+        await performHandshake()
+        const appConfig = await getAppConfig()
+        actions.setAppMetaAction(appConfig)
+        actions.completeAppMetaFetchAction()
+      } catch (error) {
+        this.setState({ hasError: true })
+        actions.completeAppMetaFetchAction()
+      }
+    })
   }
 
   render() {
@@ -72,7 +78,9 @@ class App extends Component {
       fontFamilyName,
       minimumLoaderTimeCompleted
     } = this.props
+    const { hasError } = this.state
 
+    // if (hasError) { return <AppInitError initialize={this.initialize} /> }
     let children = <Loader />
 
     const colorPalette = palette[mode]

@@ -3,6 +3,7 @@ import {
   createBrowserRouter,
   redirect
 } from 'react-router-dom'
+import ErrorBoundary from 'src/Components/ErrorBoundary'
 
 import {
   LOGIN_PAGE,
@@ -94,7 +95,8 @@ const getAppRouter = () => createBrowserRouter([
         element: <HomePage />,
         loader: redirectIfNotLoggedIn(HOME_PAGE)
       }
-    ]
+    ],
+    errorElement: <ErrorBoundary />
   },
   {
     element: <UnauthLayout />,
@@ -104,7 +106,8 @@ const getAppRouter = () => createBrowserRouter([
         element: <LoginPage />,
         loader: redirectIfLoggedIn(LOGIN_PAGE)
       }
-    ]
+    ],
+    errorElement: <ErrorBoundary />
   },
   {
     element: <DsExampleLayout />,
@@ -113,8 +116,9 @@ const getAppRouter = () => createBrowserRouter([
         path: EXAMPLES_PAGE,
         element: <ExamplesPage />
       }
-    ]
-  }
+    ],
+    errorElement: <ErrorBoundary />
+  },
 ])
 
 export default getAppRouter
