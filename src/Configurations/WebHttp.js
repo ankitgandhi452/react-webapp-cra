@@ -1,4 +1,4 @@
-import WebHttp from '@ot06/web-http'
+import WebHttp from '@m92/http-client-fe-v2'
 import {
   AS_ENABLE_CRPTOGRAPHY,
   AS_API_KEY,
