@@ -5,10 +5,10 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@m92/http-client-fe-v2": "^1.0.0",
     "@mui/icons-material": "^5.10.16",
     "@mui/lab": "^5.0.0-alpha.110",
     "@mui/material": "^5.10.16",
-    "@ot06/web-http": "^1.0.4",
     "@reduxjs/toolkit": "^1.8.5",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^13.0.0",
