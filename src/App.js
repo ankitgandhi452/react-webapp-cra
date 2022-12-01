@@ -2,10 +2,10 @@ import PropTypes from 'prop-types'
 import React, { Component, Suspense } from 'react'
 import { connect } from 'react-redux'
 import { RouterProvider } from 'react-router-dom'
-import { ThemeProvider } from '@mui/material'
+import { Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import { SnackbarProvider } from 'notistack'
-import { Helmet } from "react-helmet"
+import { Helmet } from 'react-helmet'
 
 import Loader from './Components/Loader'
 import DsNotistackAlert from './DesignSystem/Components/DsNotistackAlert'
@@ -19,7 +19,7 @@ import {
   setAppMetaModeAction,
   setAppMetaminimumLoaderTimeCompletedAction,
 
-  getReducer as getAppMetaReducer,
+  getReducer as getAppMetaReducer
 } from './Reducers/AppMeta'
 
 import getAppConfig from 'src/Services/AppConfig/getAppConfig'
@@ -32,10 +32,10 @@ class App extends Component {
     isLoading: PropTypes.bool.isRequired,
     palette: PropTypes.object,
     minimumLoaderTime: PropTypes.number,
-    minimumLoaderTimeCompleted: PropTypes.bool,
+    minimumLoaderTimeCompleted: PropTypes.bool
   }
 
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.state = {
@@ -44,11 +44,11 @@ class App extends Component {
     this.initialize = this.initialize.bind(this)
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.initialize()
   }
 
-  async initialize() {
+  async initialize () {
     this.setState({ hasError: false }, async () => {
       const { actions, minimumLoaderTime } = this.props
       try {
@@ -68,7 +68,7 @@ class App extends Component {
     })
   }
 
-  render() {
+  render () {
     const {
       mode,
       palette,
@@ -83,8 +83,7 @@ class App extends Component {
     // if (hasError) { return <AppInitError initialize={this.initialize} /> }
     let children = <Loader />
 
-    const colorPalette = palette[mode]
-    const AppTheme = getTheme(colorPalette, mode, fontFamilyName)
+    const AppTheme = getTheme(palette, fontFamilyName)
 
     if (minimumLoaderTimeCompleted && persisted && !isLoading) {
       const router = getAppRouter()
@@ -94,9 +93,9 @@ class App extends Component {
     return (
       <>
         <Helmet>
-          <link href={fontUrl} rel="stylesheet" />
+          <link href={fontUrl} rel='stylesheet' />
         </Helmet>
-        <ThemeProvider theme={AppTheme}>
+        <CssVarsProvider theme={AppTheme} defaultMode={mode}>
           <CssBaseline enableColorScheme />
           <Suspense loading={<Loader />}>
             <SnackbarProvider
@@ -110,7 +109,7 @@ class App extends Component {
               {children}
             </SnackbarProvider>
           </Suspense>
-        </ThemeProvider>
+        </CssVarsProvider>
       </>
     )
   }
@@ -125,7 +124,7 @@ const mapDispatchToProps = (dispatch) => (
       completeAppMetaFetchAction: () => dispatch(completeAppMetaFetchAction()),
       setAppMetaminimumLoaderTimeCompletedAction: () => dispatch(setAppMetaminimumLoaderTimeCompletedAction()),
       setAppMetaAction: (palette) => dispatch(setAppMetaAction(palette)),
-      setAppMetaModeAction: (mode) => dispatch(setAppMetaModeAction(mode)),
+      setAppMetaModeAction: (mode) => dispatch(setAppMetaModeAction(mode))
     }
   }
 )

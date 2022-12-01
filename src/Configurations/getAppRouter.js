@@ -21,6 +21,7 @@ const AuthLayout = React.lazy(
     'src/Layouts/Auth.Layout'
   )
 )
+
 const DsExampleLayout = React.lazy(
   () => import(
     /* webpackChunkName: "DsExampleLayout" */
@@ -29,6 +30,7 @@ const DsExampleLayout = React.lazy(
     'src/Layouts/DsExample.Layout'
   )
 )
+
 const UnauthLayout = React.lazy(
   () => import(
     /* webpackChunkName: "DsExampleLayout" */
@@ -46,12 +48,22 @@ const HomePage = React.lazy(
     'src/Pages/Home/Home.Container'
   )
 )
+
 const LoginPage = React.lazy(
   () => import(
     /* webpackChunkName: "LoginPage" */
     /* webpackMode: "lazy" */
     /* webpackPreload: true */
     'src/Pages/Login/Login.Container'
+  )
+)
+
+const Page404Page = React.lazy(
+  () => import(
+    /* webpackChunkName: "Page404Page" */
+    /* webpackMode: "lazy" */
+    /* webpackPreload: true */
+    'src/Pages/Page404/Page404.Container'
   )
 )
 
@@ -119,6 +131,10 @@ const getAppRouter = () => createBrowserRouter([
     ],
     errorElement: <ErrorBoundary />
   },
+  {
+    path: '*',
+    element: <Page404Page />
+  }
 ])
 
 export default getAppRouter

@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react'
+import { Typography } from '@mui/material'
 
 export default class LoginWrapper extends PureComponent {
-  render () {
+  render() {
     return (
-      <h1>Login Page</h1>
+      <Typography variant='headingBoldExtralarge'>Login Page</Typography>
     )
   }
 }

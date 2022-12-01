@@ -120,11 +120,11 @@ const DEFAULT_PALETTE = {
 const INITIAL_STATE = {
   isLoading: false,
   palette: DEFAULT_PALETTE,
-  mode: 'dark',
+  mode: 'light',
   fontUrl: '',
   fontFamilyName: 'Lato',
   minimumLoaderTime: 1000,
-  minimumLoaderTimeCompleted: false,
+  minimumLoaderTimeCompleted: false
 }
 
 const slice = createSlice({
@@ -153,7 +153,7 @@ const slice = createSlice({
     },
     setAppMetaminimumLoaderTimeCompletedAction: (state, { payload }) => {
       state.minimumLoaderTimeCompleted = true
-    },
+    }
   }
 })
 
@@ -172,7 +172,7 @@ export {
   setAppMetaModeAction,
   setAppMetaminimumLoaderTimeCompletedAction,
 
-  getAppMetaModeSelector,
+  getAppMetaModeSelector
 }
 
 export default slice.reducer

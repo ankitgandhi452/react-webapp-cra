@@ -38,7 +38,7 @@ export default class DsTextField extends PureComponent {
           color: `${customColor}.main`
         }}
       >
-        {Icon && <Icon color='inherit' sx={{ fontSize: 16, mr: 1 }} />}
+        {Icon && <Icon color='inherit' sx={{ fontSize: 16, mr: 'var(--ds-spacing-quickfreeze)' }} />}
         <Typography sx={{ pl: 0.5 }} variant='body3' color='inherit'>{helperText}</Typography>
       </Box>
     )

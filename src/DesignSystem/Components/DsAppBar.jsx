@@ -7,8 +7,6 @@ import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import Stack from '@mui/system/Stack'
 
-import dsSpacing from '../Theme/spacing'
-
 export default class DsAppBar extends PureComponent {
   static propTypes = {
     open: PropTypes.bool,
@@ -41,7 +39,7 @@ export default class DsAppBar extends PureComponent {
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
-                  pr: dsSpacing.bittercold
+                  pr: 'var(--ds-spacing-bittercold)'
                 }}
               >
                 {React.cloneElement(leftIcon, { variant: 'app-bar' })}
@@ -53,7 +51,7 @@ export default class DsAppBar extends PureComponent {
             justifyContent: 'center',
             alignItems: 'center',
             flexGrow: 1,
-            pr: dsSpacing.bittercold
+            pr: 'var(--ds-spacing-bittercold)'
           }}
           >
             {contentJSX}
@@ -69,7 +67,7 @@ export default class DsAppBar extends PureComponent {
               >
                 <Stack
                   direction='row'
-                  spacing={dsSpacing.bittercold}
+                  spacing='var(--ds-spacing-bittercold)'
                 >
                   {rightActions.map(rightAction => React.cloneElement(rightAction, { variant: 'app-bar' }))}
                 </Stack>

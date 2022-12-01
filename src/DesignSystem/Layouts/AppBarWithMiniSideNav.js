@@ -37,7 +37,7 @@ export default class AppBarWithMiniSideNav extends React.Component {
       navLinks: []
     },
     appBarProps: {},
-    backgroundColor: 'dsColor.surfaceSecondary',
+    backgroundColor: 'var(--ds-color-surfaceSecondary)',
     miniSideNav: true
   }
 

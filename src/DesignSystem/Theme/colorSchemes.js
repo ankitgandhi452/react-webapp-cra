@@ -1,4 +1,14 @@
-export default function getPalette (colorPalette = {}, mode = 'dark') {
+import dsRules from './rules'
+import { dsSpacingCssVars } from './spacing'
+
+export default function getColorSchemes (colorPalette = {}) {
+  const light = (colorPalette.light && getModeColorScheme(colorPalette.light, 'light')) || {}
+  const dark = (colorPalette.dark && getModeColorScheme(colorPalette.dark, 'dark')) || {}
+
+  return { light, dark }
+}
+
+function getModeColorScheme (colorPalette, mode) {
   const {
     primary,
 
@@ -122,8 +132,7 @@ export default function getPalette (colorPalette = {}, mode = 'dark') {
   }
 
   const palette = {
-    mode,
-    dsColor,
+    // mode,
     common: {
       black,
       white
@@ -207,7 +216,12 @@ export default function getPalette (colorPalette = {}, mode = 'dark') {
     // }
   }
 
-  return { dsColor, palette }
+  const ds = {
+    color: dsColor,
+    spacing: dsSpacingCssVars,
+    rules: dsRules
+  }
+  return { palette, ds }
 }
 
 function hexToRgbA (hexCode, alpha = 1) {

@@ -1,24 +1,24 @@
-import { createTheme } from '@mui/material'
-import getPalette from './palete'
+import { experimental_extendTheme as extendTheme } from '@mui/material/styles'
+import getColorSchemes from './colorSchemes'
 import getTypography from './typography'
 import breakpoints from './breakpoints'
 import getComponents from './components'
 import { SPACE_COEFICIENT } from './spacing'
 
-export default function getTheme(colorPalette, mode = 'dark', fontFamilyName = '') {
-  const { palette, dsColor } = getPalette(colorPalette, mode)
+export default function getTheme (colorPalette, fontFamilyName = '') {
+  const colorSchemes = getColorSchemes(colorPalette)
   const { typography, dsTypo, calculateLinerHeight } = getTypography(fontFamilyName)
-  const components = getComponents(dsColor, dsTypo, calculateLinerHeight)
+  const components = getComponents(dsTypo, calculateLinerHeight)
 
   const themeConfig = {
+    cssVarPrefix: '',
     components,
     breakpoints,
-    palette,
+    colorSchemes,
     typography,
-    spacing: SPACE_COEFICIENT
+    spacing: (input) => input * SPACE_COEFICIENT
   }
 
-  const theme = createTheme(themeConfig)
-  window.theme = theme
+  const theme = extendTheme(themeConfig, themeConfig)
   return theme
 }

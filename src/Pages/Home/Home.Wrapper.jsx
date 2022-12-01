@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react'
+import Typography from '@mui/material/Typography'
 
 export default class HomeWrapper extends PureComponent {
-  render () {
+  render() {
     return (
-      <h1>Home Page</h1>
+      <Typography variant='headingBoldExtralarge'>Home Page</Typography>
     )
   }
 }

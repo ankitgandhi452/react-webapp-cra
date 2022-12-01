@@ -4,8 +4,6 @@ import PropTypes from 'prop-types'
 import Box from '@mui/material/Box'
 import Stack from '@mui/system/Stack'
 
-import dsSpacing from '../Theme/spacing'
-
 export default class DsButtonGroup extends PureComponent {
   static propTypes = {
     primaryActionButton: PropTypes.element,
@@ -38,25 +36,25 @@ export default class DsButtonGroup extends PureComponent {
       >
         <Box
           sx={{
-            color: 'dsColor.typoTertiary',
+            color: 'var(--ds-color-typoTertiary)',
             textAlign: 'center',
-            pb: (tertiaryActionComponennt && disablePadding) ? dsSpacing.bittercold : 0
+            pb: (tertiaryActionComponennt && disablePadding) ? 'var(--ds-spacing-bittercold)' : 'var(--ds-spacing-zero)'
           }}
         >
           {tertiaryActionComponennt}
         </Box>
         <Stack
           direction='row'
-          spacing={dsSpacing.frostbite}
+          spacing='var(--ds-spacing-frostbite)'
           sx={{
             flex: 1,
             '> button': {
               flex: 1
             },
-            p: disablePadding ? 0 : dsSpacing.bittercold,
+            p: disablePadding ? 'var(--ds-spacing-zero)' : 'var(--ds-spacing-bittercold)',
             bgcolor: {
-              xs: 'dsColor.surfaceBackground',
-              sm: 'dsColor.surfaceBackground',
+              xs: 'var(--ds-color-surfaceBackground)',
+              sm: 'var(--ds-color-surfaceBackground)',
               md: 'transparent'
             }
           }}

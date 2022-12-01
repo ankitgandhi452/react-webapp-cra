@@ -1,28 +1,50 @@
 const SPACE_COEFICIENT = 4
 
-const dsSpacing = {
-  zero: 0 / SPACE_COEFICIENT,
-  deepfreeze: 2 / SPACE_COEFICIENT,
-  quickfreeze: 4 / SPACE_COEFICIENT,
-  glacial: 8 / SPACE_COEFICIENT,
-  frostbite: 12 / SPACE_COEFICIENT,
-  bittercold: 16 / SPACE_COEFICIENT,
-  cool: 20 / SPACE_COEFICIENT,
-  mild: 24 / SPACE_COEFICIENT,
-  pleasant: 28 / SPACE_COEFICIENT,
-  warm: 32 / SPACE_COEFICIENT,
-  tepid: 36 / SPACE_COEFICIENT,
-  tropical: 40 / SPACE_COEFICIENT,
-  hot: 44 / SPACE_COEFICIENT,
-  blazing: 48 / SPACE_COEFICIENT,
-  molten: 64 / SPACE_COEFICIENT,
-  superheated: 80 / SPACE_COEFICIENT,
-  meltdown: 96 / SPACE_COEFICIENT,
-  whitehot: 112 / SPACE_COEFICIENT,
-  plasma: 128 / SPACE_COEFICIENT
+const dsSpacingCssVars = {
+  zero: 0,
+  deepfreeze: 2,
+  quickfreeze: 4,
+  glacial: 8,
+  frostbite: 12,
+  bittercold: 16,
+  cool: 20,
+  mild: 24,
+  pleasant: 28,
+  warm: 32,
+  tepid: 36,
+  tropical: 40,
+  hot: 44,
+  blazing: 48,
+  molten: 64,
+  superheated: 80,
+  meltdown: 96,
+  whitehot: 112,
+  plasma: 128
 }
 
-export { SPACE_COEFICIENT, getSpacingPX }
+const dsSpacing = {
+  zero: dsSpacingCssVars.zero / SPACE_COEFICIENT,
+  deepfreeze: dsSpacingCssVars.deepfreeze / SPACE_COEFICIENT,
+  quickfreeze: dsSpacingCssVars.quickfreeze / SPACE_COEFICIENT,
+  glacial: dsSpacingCssVars.glacial / SPACE_COEFICIENT,
+  frostbite: dsSpacingCssVars.frostbite / SPACE_COEFICIENT,
+  bittercold: dsSpacingCssVars.bittercold / SPACE_COEFICIENT,
+  cool: dsSpacingCssVars.cool / SPACE_COEFICIENT,
+  mild: dsSpacingCssVars.mild / SPACE_COEFICIENT,
+  pleasant: dsSpacingCssVars.pleasant / SPACE_COEFICIENT,
+  warm: dsSpacingCssVars.warm / SPACE_COEFICIENT,
+  tepid: dsSpacingCssVars.tepid / SPACE_COEFICIENT,
+  tropical: dsSpacingCssVars.tropical / SPACE_COEFICIENT,
+  hot: dsSpacingCssVars.hot / SPACE_COEFICIENT,
+  blazing: dsSpacingCssVars.blazing / SPACE_COEFICIENT,
+  molten: dsSpacingCssVars.molten / SPACE_COEFICIENT,
+  superheated: dsSpacingCssVars.superheated / SPACE_COEFICIENT,
+  meltdown: dsSpacingCssVars.meltdown / SPACE_COEFICIENT,
+  whitehot: dsSpacingCssVars.whitehot / SPACE_COEFICIENT,
+  plasma: dsSpacingCssVars.plasma / SPACE_COEFICIENT
+}
+
+export { SPACE_COEFICIENT, dsSpacingCssVars, getSpacingPX }
 
 export default dsSpacing
 

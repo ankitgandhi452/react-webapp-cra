@@ -1,18 +1,16 @@
-import { experimental_sx as sx, inputLabelClasses, inputBaseClasses } from '@mui/material'
-import dsSpacing, { getSpacingPX } from './spacing'
-import dsRules from './rules'
+import { inputLabelClasses, inputBaseClasses } from '@mui/material'
 
 const DRAWER_WIDTH = 240
 const MINI_DRAWER_WIDTH = 56
-export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
+export default function getComponents (dsTypo, calculateLinerHeight) {
   const components = {
     MuiListItemButton: {
       variants: [
         {
           props: { dsVariant: 'mini-drawer' },
-          style: sx({
-            pl: dsSpacing.zero
-          })
+          style: {
+            paddingLeft: 'var(--ds-spacing-zero)'
+          }
         }
       ]
     },
@@ -20,9 +18,9 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
       variants: [
         {
           props: { dsVariant: 'mini-drawer' },
-          style: sx({
+          style: {
             width: MINI_DRAWER_WIDTH
-          })
+          }
         }
       ]
     },
@@ -79,27 +77,27 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
         }
       ],
       styleOverrides: {
-        paper: sx({
-          backgroundColor: dsColor.surfaceBackground
-        })
+        paper: {
+          backgroundColor: 'var(--ds-color-surfaceBackground)'
+        }
       }
     },
     MuiIconButton: {
       variants: [
         {
           props: { variant: 'app-bar' },
-          style: sx({
-            p: dsSpacing.deepfreeze,
-            height: dsRules.appBarIconBtnHeight,
-            width: dsRules.appBarIconBtnWidth,
-            fontSize: dsRules.appBarIconBtnFontSize,
+          style: {
+            padding: 'var(--ds-spacing-deepfreeze)',
+            height: 'var(--ds-rules-appBarIconBtnHeight)',
+            width: 'var(--ds-rules-appBarIconBtnWidth)',
+            fontSize: 'var(--ds-rules-appBarIconBtnFontSize)',
             color: 'inherit',
             '> * ': {
               height: '100% !important',
               width: '100% !important',
               fontSize: 'inherit !important'
             }
-          })
+          }
         }
       ]
     },
@@ -138,23 +136,23 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
           borderStyle: 'solid'
         },
         colorSurface: {
-          borderColor: dsColor.strokeDefault
+          borderColor: 'var(--ds-color-strokeDefault)'
         },
         colorPrimary: {
-          borderColor: dsColor.actionPrimary
+          borderColor: 'var(--ds-color-actionPrimary)'
         }
       }
     },
     MuiToolbar: {
       styleOverrides: {
-        root: sx({
-          p: dsSpacing.bittercold,
-          minHeight: dsRules.appBarMobileMinHeight,
+        root: {
+          padding: 'var(--ds-spacing-bittercold)',
+          minHeight: 'var(--ds-rules-appBarMobileMinHeight)',
           '@media (min-width: 0px)': {
-            p: dsSpacing.bittercold,
-            minHeight: dsRules.appBarMobileMinHeight
+            padding: 'var(--ds-spacing-bittercold)',
+            minHeight: 'var(--ds-rules-appBarMobileMinHeight)'
           }
-        })
+        }
       }
     },
     // Alert Component
@@ -164,47 +162,47 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
         icon: false
       },
       styleOverrides: {
-        root: sx({
+        root: {
           borderRadius: '4px',
           borderWidth: '1px',
           borderStyle: 'solid',
           boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)'
-        }),
-        filled: sx({
-          color: dsColor.typoOnSurface
-        }),
-        filledSuccess: sx({
-          borderColor: dsColor.supportPositive,
-          backgroundColor: dsColor.supportPositive
-        }),
-        filledInfo: sx({
-          borderColor: dsColor.supportTypical,
-          backgroundColor: dsColor.supportTypical
-        }),
-        filledWarning: sx({
-          borderColor: dsColor.supportWarning,
-          backgroundColor: dsColor.supportWarning
-        }),
-        filledError: sx({
-          borderColor: dsColor.supportNegative,
-          backgroundColor: dsColor.supportNegative
-        }),
-        outlined: sx({
-          borderColor: dsColor.surfaceBackground,
-          backgroundColor: dsColor.surfaceBackground
-        }),
-        outlinedSuccess: sx({
-          color: dsColor.supportPositive
-        }),
-        outlinedInfo: sx({
-          color: dsColor.supportTypical
-        }),
-        outlinedWarning: sx({
-          color: dsColor.supportWarning
-        }),
-        outlinedError: sx({
-          color: dsColor.supportNegative
-        })
+        },
+        filled: {
+          color: 'var(--ds-color-typoOnSurface)'
+        },
+        filledSuccess: {
+          borderColor: 'var(--ds-color-supportPositive)',
+          backgroundColor: 'var(--ds-color-supportPositive)'
+        },
+        filledInfo: {
+          borderColor: 'var(--ds-color-supportTypical)',
+          backgroundColor: 'var(--ds-color-supportTypical)'
+        },
+        filledWarning: {
+          borderColor: 'var(--ds-color-supportWarning)',
+          backgroundColor: 'var(--ds-color-supportWarning)'
+        },
+        filledError: {
+          borderColor: 'var(--ds-color-supportNegative)',
+          backgroundColor: 'var(--ds-color-supportNegative)'
+        },
+        outlined: {
+          borderColor: 'var(--ds-color-surfaceBackground)',
+          backgroundColor: 'var(--ds-color-surfaceBackground)'
+        },
+        outlinedSuccess: {
+          color: 'var(--ds-color-supportPositive)'
+        },
+        outlinedInfo: {
+          color: 'var(--ds-color-supportTypical)'
+        },
+        outlinedWarning: {
+          color: 'var(--ds-color-supportWarning)'
+        },
+        outlinedError: {
+          color: 'var(--ds-color-supportNegative)'
+        }
       }
     },
 
@@ -217,112 +215,115 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
       variants: [
         {
           props: { type: 'status' },
-          style: sx({
-            backgroundColor: dsColor.supportTypical,
-            color: dsColor.typoOnSurface
-          })
+          style: {
+            backgroundColor: 'var(--ds-color-supportTypical)',
+            color: 'var(--ds-color-typoOnSurface)'
+          }
         },
         {
           props: { type: 'status', color: 'success' },
-          style: sx({
-            backgroundColor: dsColor.supportPositive
-          })
+          style: {
+            backgroundColor: 'var(--ds-color-supportPositive)'
+          }
         },
         {
           props: { type: 'status', color: 'warning' },
-          style: sx({
-            backgroundColor: dsColor.supportWarning
-          })
+          style: {
+            backgroundColor: 'var(--ds-color-supportWarning)'
+          }
         },
         {
           props: { type: 'status', color: 'pending' },
-          style: sx({
-            backgroundColor: dsColor.supportPending
-          })
+          style: {
+            backgroundColor: 'var(--ds-color-supportPending)'
+          }
         },
         {
           props: { type: 'status', color: 'error' },
-          style: sx({
-            backgroundColor: dsColor.supportNegative
-          })
+          style: {
+            backgroundColor: 'var(--ds-color-supportNegative)'
+          }
         },
         {
           props: { type: 'status', color: 'info' },
-          style: sx({
-            backgroundColor: dsColor.neutral1,
-            color: dsColor.typoPrimary
-          })
+          style: {
+            backgroundColor: 'var(--ds-color-neutral1)',
+            color: 'var(--ds-color-typoPrimary)'
+          }
         },
         {
           props: { type: 'nudge' },
-          style: sx({
-            py: dsSpacing.deepfreeze,
+          style: {
+            paddingTop: 'var(--ds-spacing-deepfreeze)',
+            paddingBottom: 'var(--ds-spacing-deepfreeze)',
             textTransform: 'none'
-          })
+          }
         },
         {
           props: { type: 'nudge', color: 'default' },
-          style: sx({
-            backgroundColor: dsColor.supportDefaultNeutral,
-            color: dsColor.supportTypical
-          })
+          style: {
+            backgroundColor: 'var(--ds-color-supportDefaultNeutral)',
+            color: 'var(--ds-color-supportTypical)'
+          }
         },
         {
           props: { type: 'nudge', color: 'success' },
-          style: sx({
-            backgroundColor: dsColor.supportPositiveNeutral,
-            color: dsColor.supportPositive
-          })
+          style: {
+            backgroundColor: 'var(--ds-color-supportPositiveNeutral)',
+            color: 'var(--ds-color-supportPositive)'
+          }
         },
         {
           props: { type: 'nudge', color: 'warning' },
-          style: sx({
-            backgroundColor: dsColor.supportWarningNeutral,
-            color: dsColor.supportWarning
-          })
+          style: {
+            backgroundColor: 'var(--ds-color-supportWarningNeutral)',
+            color: 'var(--ds-color-supportWarning)'
+          }
         },
         {
           props: { type: 'nudge', color: 'pending' },
-          style: sx({
-            backgroundColor: dsColor.supportPendingNeutral,
-            color: dsColor.supportPending
-          })
+          style: {
+            backgroundColor: 'var(--ds-color-supportPendingNeutral)',
+            color: 'var(--ds-color-supportPending)'
+          }
         },
         {
           props: { type: 'nudge', color: 'error' },
-          style: sx({
-            backgroundColor: dsColor.supportNegativeNeutral,
-            color: dsColor.supportNegative
-          })
+          style: {
+            backgroundColor: 'var(--ds-color-supportNegativeNeutral)',
+            color: 'var(--ds-color-supportNegative)'
+          }
         },
         {
           props: { type: 'nudge', color: 'info' },
-          style: sx({
-            backgroundColor: dsColor.neutral1,
-            color: dsColor.typoPrimary
-          })
+          style: {
+            backgroundColor: 'var(--ds-color-neutral1)',
+            color: 'var(--ds-color-typoPrimary)'
+          }
         }
       ],
       styleOverrides: {
         root: {
           ...dsTypo.supportRegularMetadata,
-          color: dsColor.typoOnSurface,
+          color: 'var(--ds-color-typoOnSurface)',
           borderRadius: '4px'
         },
-        sizeSmall: sx({
-          px: dsSpacing.glacial,
-          py: dsSpacing.quickfreeze,
+        sizeSmall: {
+          paddingLeft: 'var(--ds-spacing-glacial)',
+          paddingRight: 'var(--ds-spacing-glacial)',
+          paddingTop: 'var(--ds-spacing-quickfreeze)',
+          paddingBottom: 'var(--ds-spacing-quickfreeze)',
           height: '20px'
-        }),
-        iconSmall: sx({
+        },
+        iconSmall: {
           fontSize: dsTypo.fontsizeIceage,
-          m: dsSpacing.zero,
-          mr: dsSpacing.quickfreeze,
+          margin: 'var(--ds-spacing-zero)',
+          marginRight: 'var(--ds-spacing-quickfreeze)',
           color: 'inherit'
-        }),
-        labelSmall: sx({
-          p: dsSpacing.zero
-        })
+        },
+        labelSmall: {
+          padding: 'var(--ds-spacing-zero)'
+        }
       }
     },
 
@@ -334,55 +335,57 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
         fullWidth: true
       },
       styleOverrides: {
-        paper: sx({
-          bgcolor: 'dsColor.surfacePrimary',
+        paper: {
+          backgroundcolor: 'var(--ds-color-surfacePrimary)',
           borderRadius: '16px',
           boxShadow: '0px 24px 40px rgba(0, 0, 0, 0.08)'
-        }),
+        },
         paperWidthXs: {
-          maxWidth: dsRules.dialogXsMaxWidth
+          maxWidth: 'var(--ds-rules-dialogXsMaxWidth)'
         }
       }
     },
     MuiDialogTitle: {
       styleOverrides: {
-        root: sx({
+        root: {
           ...dsTypo.headingBoldSmall,
-          color: 'dsColor.typoPrimary',
-          px: dsSpacing.bittercold,
-          pb: dsSpacing.bittercold,
-          pt: dsSpacing.mild,
+          color: 'var(--ds-color-typoPrimary)',
+          paddingLeft: 'var(--ds-spacing-bittercold)',
+          paddingRight: 'var(--ds-spacing-bittercold)',
+          paddingBottom: 'var(--ds-spacing-bittercold)',
+          paddingTop: 'var(--ds-spacing-mild)',
           textAlign: 'center'
-        })
+        }
       }
     },
     MuiDialogContent: {
       variants: [
         {
           props: { textOnly: true },
-          style: sx({
+          style: {
             ...dsTypo.bodyRegularMedium,
-            pb: dsSpacing.glacial,
+            paddingBottom: 'var(--ds-spacing-glacial)',
             textAlign: 'center'
-          })
+          }
         }
       ],
       styleOverrides: {
-        root: sx({
-          color: 'dsColor.typoTertiary',
-          px: dsSpacing.bittercold,
-          pb: dsSpacing.mild
-        })
+        root: {
+          color: 'var(--ds-color-typoTertiary)',
+          paddingLeft: 'var(--ds-spacing-bittercold)',
+          paddingRight: 'var(--ds-spacing-bittercold)',
+          paddingBottom: 'var(--ds-spacing-mild)'
+        }
       }
     },
     MuiDialogActions: {
       styleOverrides: {
-        root: sx({
-          p: dsSpacing.zero,
+        root: {
+          padding: 'var(--ds-spacing-zero)',
           '> *': {
             flex: 1
           }
-        })
+        }
       }
     },
 
@@ -392,43 +395,43 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
         {
           props: { size: 'S' },
           style: {
-            width: dsRules.avatarSSize,
-            height: dsRules.avatarSSize
+            width: 'var(--ds-rules-avatarSSize)',
+            height: 'var(--ds-rules-avatarSSize)'
           }
         },
         {
           props: { size: 'M' },
           style: {
-            width: dsRules.avatarMSize,
-            height: dsRules.avatarMSize
+            width: 'var(--ds-rules-avatarMSize)',
+            height: 'var(--ds-rules-avatarMSize)'
           }
         },
         {
           props: { size: 'L' },
           style: {
-            width: dsRules.avatarLSize,
-            height: dsRules.avatarLSize
+            width: 'var(--ds-rules-avatarLSize)',
+            height: 'var(--ds-rules-avatarLSize)'
           }
         },
         {
           props: { size: 'XL' },
           style: {
-            width: dsRules.avatarXLSize,
-            height: dsRules.avatarXLSize
+            width: 'var(--ds-rules-avatarXLSize)',
+            height: 'var(--ds-rules-avatarXLSize)'
           }
         },
         {
           props: { size: 'XXL' },
           style: {
-            width: dsRules.avatarXXLSize,
-            height: dsRules.avatarXXLSize
+            width: 'var(--ds-rules-avatarXXLSize)',
+            height: 'var(--ds-rules-avatarXXLSize)'
           }
         },
         {
           props: { size: '3XL' },
           style: {
-            width: dsRules.avatar3XLSize,
-            height: dsRules.avatar3XLSize
+            width: 'var(--ds-rules-avatar3XLSize)',
+            height: 'var(--ds-rules-avatar3XLSize)'
           }
         }
       ],
@@ -441,7 +444,7 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
     MuiInputAdornment: {
       styleOverrides: {
         root: {
-          color: dsColor.iconDefault,
+          color: 'var(--ds-color-iconDefault)',
           '& .MuiSvgIcon-root': {
             cursor: 'pointer'
           }
@@ -463,22 +466,22 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
           ...dsTypo.bodyRegularMedium,
           position: 'relative',
           transform: dsTypo.casingNone,
-          marginBottom: getSpacingPX(dsSpacing.glacial),
-          color: dsColor.typoPrimary,
+          marginBottom: 'var(--ds-spacing-glacial)',
+          color: 'var(--ds-color-typoPrimary)',
           [`&.${inputLabelClasses.focused}:not(.${inputLabelClasses.disabled})`]: {
-            color: dsColor.typoPrimary
+            color: 'var(--ds-color-typoPrimary)'
           },
           '&.MuiFormLabel-colorSuccess': {
-            color: dsColor.supportPositive
+            color: 'var(--ds-color-supportPositive)'
           },
           [`&.${inputLabelClasses.focused}.MuiFormLabel-colorSuccess`]: {
-            color: dsColor.supportPositive
+            color: 'var(--ds-color-supportPositive)'
           },
           [`&.${inputLabelClasses.error}`]: {
-            color: dsColor.supportNegative
+            color: 'var(--ds-color-supportNegative)'
           },
           [`&.${inputLabelClasses.focused}.${inputLabelClasses.error}`]: {
-            color: dsColor.supportNegative
+            color: 'var(--ds-color-supportNegative)'
           }
         }
       }
@@ -489,34 +492,34 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
       styleOverrides: {
         root: {
           height: '44px',
-          background: dsColor.surfacePrimary,
+          background: 'var(--ds-color-surfacePrimary)',
           borderWidth: '1px',
           borderStyle: 'solid',
-          borderColor: dsColor.strokeDefault,
+          borderColor: 'var(--ds-color-strokeDefault)',
           borderRadius: '4px',
-          padding: `${getSpacingPX(dsSpacing.frostbite)} ${getSpacingPX(dsSpacing.glacial)}`,
+          padding: 'var(--ds-spacing-frostbite) var(--ds-spacing-glacial)',
           [`&.${inputBaseClasses.focused}:not(.${inputBaseClasses.disabled})`]: {
-            borderColor: dsColor.strokeActive
+            borderColor: 'var(--ds-color-strokeActive)'
           },
           '&.MuiInputBase-colorSuccess': {
-            borderColor: dsColor.supportPositive
+            borderColor: 'var(--ds-color-supportPositive)'
           },
           [`&.${inputBaseClasses.focused}.MuiInputBase-colorSuccess`]: {
-            borderColor: dsColor.supportPositive
+            borderColor: 'var(--ds-color-supportPositive)'
           },
           [`&.${inputBaseClasses.disabled}`]: {
-            background: dsColor.stateDisabledSurface,
-            borderColor: dsColor.strokeDisabled
+            background: 'var(--ds-color-stateDisabledSurface)',
+            borderColor: 'var(--ds-color-strokeDisabled)'
           },
           [`&.${inputBaseClasses.error}`]: {
-            borderColor: dsColor.supportNegative
+            borderColor: 'var(--ds-color-supportNegative)'
           },
           [`&.${inputBaseClasses.focused}.${inputBaseClasses.error}`]: {
-            borderColor: dsColor.supportNegative
+            borderColor: 'var(--ds-color-supportNegative)'
           },
           '&.MuiInputBase-readOnly': {
-            background: dsColor.stateDisabledSurface,
-            borderColor: dsColor.strokeDisabled,
+            background: 'var(--ds-color-stateDisabledSurface)',
+            borderColor: 'var(--ds-color-strokeDisabled)',
             pointerEvents: 'none'
           }
         }
@@ -524,14 +527,14 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
     },
     MuiFormHelperText: {
       styleOverrides: {
-        root: sx({
+        root: {
           textTransform: 'none',
-          margin: dsSpacing.zero,
-          marginTop: dsSpacing.deepfreeze,
-          pl: dsSpacing.deepfreeze,
-          pt: dsSpacing.deepfreeze,
-          pb: dsSpacing.deepfreeze
-        })
+          margin: 'var(--ds-spacing-zero)',
+          marginTop: 'var(--ds-spacing-deepfreeze)',
+          paddingLeft: 'var(--ds-spacing-deepfreeze)',
+          paddingTop: 'var(--ds-spacing-deepfreeze)',
+          paddingBottom: 'var(--ds-spacing-deepfreeze)'
+        }
       }
     },
 
@@ -554,10 +557,10 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
         {
           props: { variant: 'flushed', color: 'primary' },
           style: {
-            color: dsColor.typoOnSurface,
-            backgroundColor: dsColor.actionPrimary,
+            color: 'var(--ds-color-typoOnSurface)',
+            backgroundColor: 'var(--ds-color-actionPrimary)',
             '&:hover': {
-              backgroundColor: dsColor.actionPrimary,
+              backgroundColor: 'var(--ds-color-actionPrimary)',
               boxShadow: '0px 0px 2px rgba(0, 0, 0, 0.1)'
             }
           }
@@ -565,7 +568,7 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
         {
           props: { variant: 'flushed', color: 'primary', disabled: true },
           style: {
-            backgroundColor: dsColor.stateUnselected
+            backgroundColor: 'var(--ds-color-stateUnselected)'
           }
         }
       ],
@@ -583,7 +586,7 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
         },
         text: {
           '&:disabled': {
-            color: dsColor.typoDisabled
+            color: 'var(--ds-color-typoDisabled)'
           },
           '&:hover': {
             background: 'transparent'
@@ -591,62 +594,62 @@ export default function getComponents (dsColor, dsTypo, calculateLinerHeight) {
         },
         containedPrimary: {
           '&:hover': {
-            backgroundColor: dsColor.actionPrimary,
+            backgroundColor: 'var(--ds-color-actionPrimary)',
             boxShadow: '0px 0px 2px rgba(0, 0, 0, 0.1)'
           }
         },
         containedSecondary: {
-          backgroundColor: dsColor.surfaceSecondary,
+          backgroundColor: 'var(--ds-color-surfaceSecondary)',
           borderWidth: '1px',
           borderStyle: 'solid',
-          borderColor: dsColor.strokeDefault,
-          color: dsColor.actionPrimary,
+          borderColor: 'var(--ds-color-strokeDefault)',
+          color: 'var(--ds-color-actionPrimary)',
           '&:hover': {
-            backgroundColor: dsColor.surfaceSecondary,
+            backgroundColor: 'var(--ds-color-surfaceSecondary)',
             boxShadow: '0px 0px 2px rgba(0, 0, 0, 0.1)'
           },
           '&:disabled': {
-            backgroundColor: dsColor.surfaceSecondary,
-            color: dsColor.typoDisabled
+            backgroundColor: 'var(--ds-color-surfaceSecondary)',
+            color: 'var(--ds-color-typoDisabled)'
           }
         },
-        textSizeSmall: sx({
-          paddingX: dsSpacing.quickfreeze,
-          paddingY: dsSpacing.glacial,
+        textSizeSmall: {
+          paddingX: 'var(--ds-spacing-quickfreeze)',
+          paddingY: 'var(--ds-spacing-glacial)',
           height: '28px'
-        }),
-        sizeLarge: sx({
-          padding: dsSpacing.bittercold,
+        },
+        sizeLarge: {
+          padding: 'var(--ds-spacing-bittercold)',
           height: '56px',
           fontSize: dsTypo.fontsizeBittercold,
           lineHeight: calculateLinerHeight(dsTypo.fontsizeBittercold, dsTypo.lineheightZero)
-        }),
-        sizeMedium: sx({
-          paddingX: dsSpacing.bittercold,
-          paddingY: dsSpacing.frostbite,
+        },
+        sizeMedium: {
+          paddingX: 'var(--ds-spacing-bittercold)',
+          paddingY: 'var(--ds-spacing-frostbite)',
           height: '48px',
           fontSize: dsTypo.fontsizeFrigid,
           lineHeight: calculateLinerHeight(dsTypo.fontsizeFrigid, dsTypo.lineheightZero)
-        }),
-        sizeSmall: sx({
-          paddingX: dsSpacing.bittercold,
-          paddingY: dsSpacing.glacial,
+        },
+        sizeSmall: {
+          paddingX: 'var(--ds-spacing-bittercold)',
+          paddingY: 'var(--ds-spacing-glacial)',
           height: '34px',
           fontSize: dsTypo.fontsizeFrostbite,
           lineHeight: calculateLinerHeight(dsTypo.fontsizeFrostbite, dsTypo.lineheightZero)
-        }),
-        startIcon: sx({
-          mr: 1,
+        },
+        startIcon: {
+          marginRight: 'var(--ds-spacing-quickfreeze)',
           '*:nth-of-type(1)': {
             fontSize: 'inherit'
           }
-        }),
-        endIcon: sx({
-          ml: 1,
+        },
+        endIcon: {
+          marginLeft: 'var(--ds-spacing-quickfreeze)',
           '*:nth-of-type(1)': {
             fontSize: 'inherit'
           }
-        })
+        }
       }
     }
   }
