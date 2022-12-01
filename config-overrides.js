@@ -4,7 +4,8 @@ const {
   overrideDevServer,
   addBundleVisualizer,
   addWebpackAlias,
-  addWebpackPlugin
+  addWebpackPlugin,
+  addBabelPlugin
 } = require('customize-cra')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
@@ -80,7 +81,7 @@ const cspPolicy = {
   'base-uri': "'self'",
   'object-src': "'none'",
   'script-src': ["'unsafe-inline'", "'self'", "'unsafe-eval'"],
-  'style-src': ["'unsafe-inline'", "'self'", "'unsafe-eval'", "https://fonts.googleapis.com", `${REACT_APP_ASSEST_DOMAIN}`]
+  'style-src': ["'unsafe-inline'", "'self'", "'unsafe-eval'", 'https://fonts.googleapis.com', `${REACT_APP_ASSEST_DOMAIN}`]
 }
 
 const cspOptions = {
@@ -98,14 +99,16 @@ const cspOptions = {
 
 module.exports = {
   webpack: override(
-    addWebpackAlias({
-      src: path.resolve(__dirname, 'src/')
-    }),
+    addBabelPlugin([
+      'babel-plugin-direct-import',
+      { modules: ['@mui/material', '@mui/icons-material'] }
+    ]),
+    addWebpackAlias({ src: path.resolve(__dirname, 'src/') }),
     addBundleVisualizer({}, true),
     addWebpackPlugin(new WebResourceHints(webResourceHintsOptions)),
     addWebpackPlugin(new CspHtmlWebpackPlugin(cspPolicy, cspOptions)),
     addWebpackPlugin(new FaviconsWebpackPlugin(faviconOptions)),
-    addWebpackPlugin(new WebpackPwaManifest(pwaManifestOptions)),
+    addWebpackPlugin(new WebpackPwaManifest(pwaManifestOptions))
   ),
   devServer: overrideDevServer()
 }

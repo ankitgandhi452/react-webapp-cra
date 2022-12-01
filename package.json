@@ -63,6 +63,7 @@
     ]
   },
   "devDependencies": {
+    "babel-plugin-direct-import": "^1.0.0",
     "csp-html-webpack-plugin": "^5.1.0",
     "customize-cra": "^1.0.0",
     "favicons": "6.2.2",
